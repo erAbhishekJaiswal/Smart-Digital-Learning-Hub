@@ -125,7 +125,7 @@ const Navbar = () => {
                     <span className="nav-link-underline"></span>
                   </Link>
                 </li>
-                ) : <li className="nav-link-item">
+                ) : (<li className="nav-link-item">
                   <Link
                     to="/signin"
                     className="nav-link"
@@ -135,7 +135,7 @@ const Navbar = () => {
                     <span className="nav-link-text">Sign In</span>
                     <span className="nav-link-underline"></span>
                   </Link>
-                </li>
+                </li>)
               }
               </li>
             </ul>

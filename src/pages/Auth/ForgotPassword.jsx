@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../../CSSFiles/Auth/ResetForget.css";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { ForgetPasswordRequestOtp } from "../../Api/AuthApi";
 const ForgetPassword = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -15,10 +16,11 @@ const ForgetPassword = () => {
 
     // Simulate API call
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/v1/auth/password/request-otp`,
-        { email }
-      );
+      // const response = await axios.post(
+      //   `http://localhost:5000/api/v1/auth/password/request-otp`,
+      //   { email }
+      // );
+      const response = await ForgetPasswordRequestOtp({ email });
       // // console.log(response.data);
       setTimeout(() => {
         setIsLoading(false);

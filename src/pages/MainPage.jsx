@@ -17,6 +17,9 @@ import TechCategoryPage from './PublicPages/TechCategoryPage'
 import TechSubCategoryPage from './PublicPages/TechSubCategoryPage'
 import TechStackPage from './PublicPages/TechStackPage'
 import ForgetPassword from './Auth/ForgotPassword'
+import OtpVerification from './Auth/OtpVerification';
+import OtpForgetVerification from './Auth/OtpForgetVerification';
+import ResetPassword from './Auth/ResetPassword';
 const MainPage = () => {
   return (
     <>
@@ -36,6 +39,9 @@ const MainPage = () => {
                     <Route path="/internalerror" element={<InternalError />} />
                     <Route path="/maintanance" element={<MaintenancePage />} />
                     <Route path="/notfound" element={<NotFound />} />
+                    <Route path="/email-verify" element={<OtpVerification />} />
+                    <Route path="/otp-forget-verification" element={<OtpForgetVerification />} />
+                    <Route path='/reset-password' element={<ResetPassword />} />
                     <Route path='/techstack' element ={<TechStackPage />} />
                     <Route path="/techstack/:categoryId" element={<TechCategoryPage />} />
                     <Route path="/techstack/:categoryId/:subcategoryName" element={<TechSubCategoryPage />} />

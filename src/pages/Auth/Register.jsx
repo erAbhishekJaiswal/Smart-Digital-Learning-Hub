@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../CSSFiles/Auth/Register.css";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, Links, useNavigate } from "react-router-dom";
-import { registerUser } from "../../Api/AuthApi";
+import { requestOtp } from "../../Api/AuthApi";
 import { toast } from "react-hot-toast";
 
 const Register = () => {
@@ -26,10 +26,11 @@ const Register = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = await registerUser(formData);
+      const response = await requestOtp(formData);
       console.log(response);
-      toast.success("Registration successful!");
-      navigate("/signin");
+      // toast.success("Registration successful!");
+      navigate("/email-verify", { state: formData });
+      // navigate("/signin");
     } catch (error) {
       console.error(error);
       toast.error(error.response.data.message);
