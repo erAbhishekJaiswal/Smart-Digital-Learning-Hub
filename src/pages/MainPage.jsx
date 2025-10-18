@@ -20,6 +20,8 @@ import ForgetPassword from './Auth/ForgotPassword'
 import OtpVerification from './Auth/OtpVerification';
 import OtpForgetVerification from './Auth/OtpForgetVerification';
 import ResetPassword from './Auth/ResetPassword';
+import About from './PublicPages/About';
+import Contact from './PublicPages/Contact';
 const MainPage = () => {
   return (
     <>
@@ -33,6 +35,8 @@ const MainPage = () => {
                     <Route path="/signup" element={<Register />} />
                     <Route path="/forgot-password" element={<ForgetPassword />} />
                     <Route path="/home" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/" element={<Home />} />
                     <Route path='/unauthorized' element={<UnauthorizedAccess />} />
                     <Route path="/not-authorized" element={<UnauthorizedAccess />} />

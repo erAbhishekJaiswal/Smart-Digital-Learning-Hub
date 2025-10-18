@@ -12,6 +12,8 @@ export const registerUser = async (data) => {
 };
 
 export const loginUser = async (data) => {
+    console.log(data);
+    
     const response = await axios.post(`${BasseUrl}/auth/login`, data);
     return response.data
 };
@@ -30,3 +32,4 @@ export const resetPassword = async (data) => {
     const response = await axios.post(`${BasseUrl}/auth/resetpassword`, data);
     return response
 };
+
