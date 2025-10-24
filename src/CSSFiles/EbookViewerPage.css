@@ -1,0 +1,390 @@
+/* =========================================
+   🌟 GLOBAL VARIABLES & BASE STYLES
+========================================= */
+:root {
+  --primary-color: #4a90e2;
+  --primary-dark: #357abd;
+  --secondary-color: #f5f7fa;
+  --accent-color: #00c9a7;
+  --text-color: #333;
+  --text-light: #666;
+  --border-color: #e5e7eb;
+  --bg-color: #ffffff;
+  --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  font-family: "Inter", "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* =========================================
+   🌍 MAIN LAYOUT
+========================================= */
+.ebook-viewer-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to right, #f8fafc, #eef2f7);
+  transition: var(--transition);
+}
+
+/* =========================================
+   📘 PDF VIEWER SECTION
+========================================= */
+.pdf-viewer {
+  flex: 3;
+  background-color: var(--bg-color);
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+/* =========================================
+   🧭 VIEWER TOOLBAR
+========================================= */
+.viewer-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: var(--shadow-strong);
+}
+
+.viewer-toolbar .toolbar-left,
+.viewer-toolbar .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewer-toolbar span {
+  font-size: 0.95rem;
+}
+
+.viewer-toolbar button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.viewer-toolbar button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.viewer-toolbar .toolbar-right button.active {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+/* =========================================
+   📄 PDF CONTAINER & PAGE VIEW
+========================================= */
+.pdf-container { 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  background: #f8f9fb;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Single page mode: full width */
+.pdf-container.single .pdf-page {
+  width: 100%;
+  max-width: 900px; /* optional: constrain max width */
+  height: auto;
+  margin: auto;
+  object-fit: contain;
+}
+
+/* Two-page mode */
+.pdf-container.double .two-page-view {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.pdf-container.double .pdf-page {
+  width: 48%; /* two pages side by side */
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.pdf-page:hover {
+  transform: scale(1.01);
+}
+
+.react-pdf__Document{
+    margin-top: 365px;
+}
+
+/* Responsive adjustments */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .pdf-container.double .pdf-page {
+    width: 48%;
+    max-width: 400px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .pdf-container.double .two-page-view {
+    flex-direction: column; /* stack pages */
+    gap: 15px;
+  }
+
+  .pdf-container.double .pdf-page,
+  .pdf-container.single .pdf-page {
+    width: 100% !important; /* full width */
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================
+   🤖 CHAT SIDEBAR
+========================================= */
+.chat-sidebar {
+  flex: 1.2;
+  background-color: var(--bg-color);
+  margin: 20px 20px 20px 0;
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-sidebar h3 {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  box-shadow: var(--shadow-strong);
+}
+
+/* =========================================
+   💬 CHAT WINDOW & MESSAGES
+========================================= */
+.chat-window {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+  background: var(--secondary-color);
+}
+
+/* Scrollbar */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+.chat-window::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Messages */
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 85%;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  animation: fadeInUp 0.3s ease both;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background-color: #f0f3f9;
+  border-bottom-left-radius: 2px;
+  color: var(--text-color);
+}
+
+/* =========================================
+   📝 CHAT INPUT
+========================================= */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid var(--border-color);
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.chat-input input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+.chat-input button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chat-input button:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+/* =========================================
+   ✨ ANIMATIONS
+========================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   📱 RESPONSIVE DESIGN
+========================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .ebook-viewer-page {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .pdf-viewer,
+  .chat-sidebar {
+    flex: 1 1 100%;
+    margin: 10px;
+    height: auto;
+  }
+
+  .chat-sidebar {
+    order: 2; /* Chat appears below PDF */
+  }
+
+  .viewer-toolbar {
+    font-size: 0.9rem;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pdf-container.double .two-page-view {
+    flex-direction: column;
+  }
+
+  .pdf-page {
+    width: 95% !important;
+    height: auto !important;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 600px) {
+  .viewer-toolbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .viewer-toolbar span {
+    font-size: 0.85rem;
+  }
+
+  .chat-input input {
+    font-size: 0.9rem;
+  }
+
+  .chat-sidebar h3 {
+    font-size: 1rem;
+  }
+
+  .pdf-page {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .pdf-container.double .two-page-view {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+
+.react-pdf__Page__canvas{
+  width: 100% !important;
+  height: 100% !important;
+}

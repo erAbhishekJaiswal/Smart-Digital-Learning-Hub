@@ -302,7 +302,7 @@
 }
 
 /* Contact Info */
-.contact-info {
+.footer-contact-info {
   display: flex;
   flex-direction: column;
   gap: 16px;

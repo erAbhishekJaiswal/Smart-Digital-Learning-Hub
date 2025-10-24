@@ -6,6 +6,8 @@ import Sidebar from '../../Components/AdminDash/Sidebar'
 import Header from '../../Components/AdminDash/Header'
 import CreateTechStack from './techStack/CreateTechStack'
 import AdminProfile from './AdminProfile'
+import AddEditCourse from './course/AddEditCourse'
+import CourseList from './course/CourseList'
 const AdminPages = () => {
       const [sidebarOpen, setSidebarOpen] = useState(false);
       const [darkMode, setDarkMode] = useState(false);
@@ -34,6 +36,8 @@ const AdminPages = () => {
         <Route path='/dashboard' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/userlist' element ={<UserList dark={darkMode}  />} />
         <Route path='/createTeckStack' element={<CreateTechStack dark={darkMode} />} />
+        <Route path='/addnewcourse' element={<AddEditCourse dark={darkMode} />} />
+        <Route path='/courselist' element={<CourseList dark={darkMode} />} />
         <Route path='/profile' element={<AdminProfile dark={darkMode} />} />
     </Routes>
     </div>

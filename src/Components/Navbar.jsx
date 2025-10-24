@@ -98,7 +98,7 @@ const Navbar = () => {
               isMenuOpen ? "nav-links-active" : ""
             }`}
           >
-            <ul className="nav-links-list">
+            {/* <ul className="nav-links-list">
               {navigationLinks.map((link, index) => (
                 <li key={link.name} className="nav-link-item">
                   <Link
@@ -118,14 +118,14 @@ const Navbar = () => {
                   <Link
                     to={getUserRole() === "admin" ? "/admin/dashboard" : "/student/dashboard"}
                     className="nav-link"
-                    // style={{ animationDelay: `${100 * 0.1}s` }}
                   >
                     <span className="nav-link-icon"><MdDashboard /></span>
-                    {/* <span className="nav-link-text">Profile</span> */}
                     <span className="nav-link-underline"></span>
                   </Link>
                 </li>
-                ) : (<li className="nav-link-item">
+                ) : (
+                  <>
+                <li className="nav-link-item">
                   <Link
                     to="/signin"
                     className="nav-link"
@@ -135,10 +135,48 @@ const Navbar = () => {
                     <span className="nav-link-text">Sign In</span>
                     <span className="nav-link-underline"></span>
                   </Link>
-                </li>)
+                </li>
+                </>
+                )
               }
               </li>
-            </ul>
+            </ul> */}
+            <ul className="nav-links-list">
+  {navigationLinks.map((link, index) => (
+    <li key={link.name} className="nav-link-item">
+      <Link
+        to={link.path}
+        className="nav-link"
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
+        <span className="nav-link-icon">{link.icon}</span>
+        <span className="nav-link-text">{link.name}</span>
+        <span className="nav-link-underline"></span>
+      </Link>
+    </li>
+  ))}
+
+  {isUserLoggedIn() && getUserRole() ? (
+    <li className="nav-link-item">
+      <Link
+        to={getUserRole() === "admin" ? "/admin/dashboard" : "/student/dashboard"}
+        className="nav-link"
+      >
+        <span className="nav-link-icon"><MdDashboard /></span>
+        <span className="nav-link-underline"></span>
+      </Link>
+    </li>
+  ) : (
+    <li className="nav-link-item">
+      <Link to="/signin" className="nav-link">
+        <span className="nav-link-icon"><BiLogInCircle /></span>
+        <span className="nav-link-text">Sign In</span>
+        <span className="nav-link-underline"></span>
+      </Link>
+    </li>
+  )}
+</ul>
+
           </div>
 
           {/* Notification Bell */}

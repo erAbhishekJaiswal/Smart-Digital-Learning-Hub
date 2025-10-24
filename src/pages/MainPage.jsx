@@ -22,6 +22,12 @@ import OtpForgetVerification from './Auth/OtpForgetVerification';
 import ResetPassword from './Auth/ResetPassword';
 import About from './PublicPages/About';
 import Contact from './PublicPages/Contact';
+// import AddEditCourse from './Admin/course/AddEditCourse';
+import CreateUpdate from './Admin/course/CreateUpdate';
+import CourseList from './Admin/course/CourseList';
+import ELibrary from './Admin/eLibrary/ELibrary';
+import EbookDetails from './Admin/eLibrary/EbookDetails';
+import EbookViewerPage from './Admin/eLibrary/EbookViewerPage';
 const MainPage = () => {
   return (
     <>
@@ -49,7 +55,12 @@ const MainPage = () => {
                     <Route path='/techstack' element ={<TechStackPage />} />
                     <Route path="/techstack/:categoryId" element={<TechCategoryPage />} />
                     <Route path="/techstack/:categoryId/:subcategoryName" element={<TechSubCategoryPage />} />
-                    
+                    {/* <Route path='/course' element={<AddEditCourse />} /> */}
+                    <Route path='/addnewcourse' element={<CreateUpdate />} />
+                    <Route path='/courselist' element={<CourseList />} />
+                    <Route path='/ebooks' element={<ELibrary />} />
+                    <Route path='/ebooks/detail' element={<EbookDetails />} />
+                    <Route path='/ebooks/viewer' element={<EbookViewerPage />} />
                 </Routes>
               <Footer />
             </PublicRoute>

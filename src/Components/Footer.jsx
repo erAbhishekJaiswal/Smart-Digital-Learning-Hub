@@ -117,7 +117,7 @@ const Footer = () => {
           {/* Contact Info Section */}
           <div className="footer-section contact-section">
             <h4 className="section-title">Contact Info</h4>
-            <div className="contact-info">
+            <div className="footer-contact-info">
               {contactInfo.map((contact, index) => (
                 <div 
                   key={contact.type} 
