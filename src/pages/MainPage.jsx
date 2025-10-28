@@ -5,8 +5,9 @@ import {PrivateRoute,PublicRoute} from "./Auth/ProtectRoute"
 import Home from "./PublicPages/Home"
 import Login from "../pages/Auth/Login"
 import Register from "../pages/Auth/Register"
-import Navbar from "../Components/Navbar"
-import Footer from "../Components/Footer"
+// import Navbar from "../Components/Navbar"
+// import Footer from "../Components/Footer"
+import Footer from '../Components/PublicComp/Footer';
 import StudentPages from './Students/StudentPages'
 import AdminPages from './Admin/AdminPages'
 import UnauthorizedAccess from './shared/UnauthorizedAccess'
@@ -28,6 +29,9 @@ import CourseList from './Admin/course/CourseList';
 import ELibrary from './Admin/eLibrary/ELibrary';
 import EbookDetails from './Admin/eLibrary/EbookDetails';
 import EbookViewerPage from './Admin/eLibrary/EbookViewerPage';
+import Header from '../Components/PublicComp/Header';
+import FlipBook from '../Components/FlipBook';
+import UploadBookForm from './Admin/EBooks/UploadBookForm';
 const MainPage = () => {
   return (
     <>
@@ -35,32 +39,42 @@ const MainPage = () => {
      <Routes>
         <Route path='/*' element={
             <PublicRoute >
-              <Navbar />
+              {/* <Navbar /> */}
+              <Header />
                 <Routes>
+                  {/*********************Auth Routes *********************/}
                     <Route path="/signin" element={<Login />} />
                     <Route path="/signup" element={<Register />} />
                     <Route path="/forgot-password" element={<ForgetPassword />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/" element={<Home />} />
                     <Route path='/unauthorized' element={<UnauthorizedAccess />} />
                     <Route path="/not-authorized" element={<UnauthorizedAccess />} />
-                    <Route path="/internalerror" element={<InternalError />} />
+                     <Route path="/internalerror" element={<InternalError />} />
                     <Route path="/maintanance" element={<MaintenancePage />} />
                     <Route path="/notfound" element={<NotFound />} />
                     <Route path="/email-verify" element={<OtpVerification />} />
                     <Route path="/otp-forget-verification" element={<OtpForgetVerification />} />
                     <Route path='/reset-password' element={<ResetPassword />} />
+
+                  {/*********************Public Routes *********************/}
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/" element={<Home />} />
+                   
+                  {/*********************Public Courses Routes *********************/}
                     <Route path='/techstack' element ={<TechStackPage />} />
                     <Route path="/techstack/:categoryId" element={<TechCategoryPage />} />
                     <Route path="/techstack/:categoryId/:subcategoryName" element={<TechSubCategoryPage />} />
                     {/* <Route path='/course' element={<AddEditCourse />} /> */}
+
+                  {/*********************Admin Courses Routes *********************/}
                     <Route path='/addnewcourse' element={<CreateUpdate />} />
                     <Route path='/courselist' element={<CourseList />} />
                     <Route path='/ebooks' element={<ELibrary />} />
                     <Route path='/ebooks/detail' element={<EbookDetails />} />
                     <Route path='/ebooks/viewer' element={<EbookViewerPage />} />
+                    <Route path='/flipbook/:publicId' element={<FlipBook />} />
+                  <Route path="/uploadpdf" element={<UploadBookForm />} />
                 </Routes>
               <Footer />
             </PublicRoute>

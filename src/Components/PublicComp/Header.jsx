@@ -1,0 +1,104 @@
+import React from "react";
+import "../../CSSFiles/component/public/Header.css"; // optional CSS file for styling
+import { FaFacebookF } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { IoLogoTwitter } from "react-icons/io";
+import { TfiYoutube } from "react-icons/tfi";
+import { FaMobileAlt } from "react-icons/fa";
+const Header = () => {
+  return (
+    <header className="header-bar">
+      {/* 🔹 Top Contact Bar */}
+      <div className="header-bar-top">
+        <div className="header-bar-top-inner">
+          <div className="header-bar-phones">
+            <FaMobileAlt />
+            <a href="tel:+917725064078">+91 7725064078</a>
+            <span className="divider">/</span>
+            <a href="tel:+918451924078">+91 8451924078</a>
+          </div>
+
+          <div className="header-bar-social">
+            <a href="https://www.facebook.com/kumarinfotech020">
+              <FaFacebookF />
+            </a>
+            |
+            <a href="https://www.instagram.com/kumarinfotech_it_services">
+              <FaInstagram />
+            </a>
+            |
+            <a href="https://www.linkedin.com/in/kumarinfotech20">
+              <FaLinkedinIn />
+            </a>
+            |
+            <a href="https://twitter.com/kumarinfotech20">
+              <IoLogoTwitter />
+            </a>
+            |
+            <a href="https://www.youtube.com/kumarinfotech20">
+              <TfiYoutube />
+            </a>
+            |
+            <a
+              href="https://g.page/r/CaTVvcqNsGqVEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://www.kumarinfotech.com/img/reviewImage.png"
+                alt="Review Us On Google"
+                className="google-review"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* 🔸 Main header-bar */}
+      <div className="header-bar-main">
+        <div className="header-bar-logo">
+          <a href="/">
+            <img
+              src="https://www.kumarinfotech.com/img/logo/kitlogonew.webp"
+              alt="Kumarinfotech Logo"
+              className="logo-img"
+            />
+          </a>
+        </div>
+
+       
+
+        <div className="header-bar-btn">
+             <nav className="header-bar-links">
+          <ul>
+            <li><a href="/" className="active">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        
+          <button onClick={() => alert("Enquiry Clicked!")}>ENQUIRY NOW</button>
+        </div>
+      </div>
+
+      {/* 🔻 Bottom Gradient Bar */}
+      <div className="header-bar-marquee">
+        <marquee className="marquee-text"
+          scrollamount="6"
+          onMouseOver={(e) => e.target.stop()}
+          onMouseOut={(e) => e.target.start()}
+        >
+          ⭐ 100% CLIENT SATISFACTION ⭐ ON-TIME PROJECT DELIVERY ⭐ LIVE &
+          REAL-TIME PROJECTS ⭐ HIGHLY EXPERIENCED PROFESSIONALS ⭐ TRUSTED BY
+          LEADING BUSINESSES ⭐ DEDICATED SUPPORT & MAINTENANCE
+        </marquee>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

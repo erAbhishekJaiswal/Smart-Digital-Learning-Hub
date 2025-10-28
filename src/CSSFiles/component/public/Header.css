@@ -1,0 +1,171 @@
+/* Global Reset */
+.header-bar {
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* 🔹 Top Contact Bar */
+.header-bar-top {
+  background-color: #002147;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  /* padding: 5px 0; */
+}
+
+.header-bar-top-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+}
+
+.header-bar-phones {
+  font-weight: 600;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-bar-phones a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.header-bar-phones .divider {
+  margin: 0 4px;
+}
+
+.header-bar-social {
+  margin-right: 100px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-bar-social a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.header-bar-social a:hover {
+  color: #ffc107;
+}
+
+.google-review {
+  height: 18px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* 🔸 Main header-bar */
+.header-bar-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 12px 0; */
+  background: #fff;
+}
+.header-bar-logo{
+    margin-left: 17px;
+}
+
+.logo-img {
+  /* max-height: 55px; */
+  width: 85px !important;
+  /* height: 85px; */
+}
+
+.header-bar-links ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+}
+
+.header-bar-links a {
+  text-decoration: none;
+  color: #001b3a;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: color 0.3s;
+  font-family: Roboto, sans-serif;
+
+}
+
+.header-bar-links a:hover,
+.header-bar-links a.active {
+  color: #fcb900;
+  border-bottom: 2px solid #fcb900;
+}
+.header-bar-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 27px;
+    margin-right: 15px;
+}
+
+.header-bar-btn button {
+  background-color: #002147;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header-bar-btn button:hover {
+  background-color: #003366;
+}
+
+/* 🔻 Bottom Gradient Bar */
+.header-bar-marquee {
+    padding: 1px;
+}
+.marquee-text{
+  background: linear-gradient(53deg, #fbb03b 0%, #c01525 100%);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 6px;
+}
+
+/* ✅ Responsive */
+@media (max-width: 992px) {
+  .header-bar-main {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .header-bar-links ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .header-bar-btn {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-bar-phones {
+    font-size: 12px;
+  }
+
+  .header-bar-social a {
+    margin-left: 8px;
+    font-size: 14px;
+  }
+}

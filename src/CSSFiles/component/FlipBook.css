@@ -1,0 +1,355 @@
+/* Enhanced FlipBook.css - PDF Specific Fixes */
+
+/* Base container */
+.flipbook-wrapper-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Enhanced PDF Container */
+.flipbook-container-enhanced {
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  background: white; /* Changed to white for better PDF contrast */
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+  position: relative;
+  overflow: hidden;
+  animation: containerAppear 0.8s ease-out;
+  margin: 1rem 0;
+}
+
+/* PDF Page Wrapper - Fixed Alignment */
+.pdf-page-wrapper {
+  background: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.pdf-page-content {
+  position: relative !important;
+  background: white !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* PDF Page Render - Improved Clarity */
+.pdf-page-render {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: calc(100% - 40px) !important; /* Account for footer */
+  margin: 0 !important;
+  padding: 10px !important;
+  
+  /* Improve PDF rendering quality */
+  canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Fix for react-pdf text and annotation layers */
+.react-pdf__Page {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.react-pdf__Page__textContent,
+.react-pdf__Page__annotations {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: scale(1) !important;
+  transform-origin: 0 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.react-pdf__Page__canvas {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  height: auto !important;
+  width: auto !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+/* Page Footer */
+.page-footer {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Improved Loading States */
+.pdf-loading-placeholder,
+.page-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 2rem;
+  color: #333;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.page-loading {
+  background: transparent;
+  color: white;
+}
+
+.page-loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(102, 126, 234, 0.3);
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+/* Enhanced FlipBook Styling */
+.custom-flipbook-enhanced {
+  background: white !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+}
+
+.custom-flipbook-enhanced .page {
+  background: white !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Improved Controls for Better Usability */
+.flipbook-controls-enhanced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: controlsSlideUp 0.6s ease-out;
+  max-width: 800px;
+  width: 100%;
+}
+
+.control-btn-enhanced {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn-enhanced:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Quick Navigation Improvements */
+.quick-navigation-panel {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 800px;
+  width: 100%;
+}
+
+.navigation-scroll-container {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding: 0.3rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+.page-thumbnail {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  font-weight: 500;
+  min-width: 35px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.page-thumbnail:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.page-thumbnail.active {
+  background: #667eea;
+  border-color: #764ba2;
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+}
+
+/* Fullscreen Mode Improvements */
+.flipbook-wrapper-box.fullscreen-active {
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  justify-content: flex-start;
+}
+
+.flipbook-wrapper-box.fullscreen-active .flipbook-container-enhanced {
+  margin: 2rem 0;
+  max-height: 80vh;
+}
+
+.flipbook-wrapper-box.fullscreen-active .pdf-page-render canvas {
+  max-height: 75vh !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .flipbook-wrapper-box {
+    padding: 1rem 0.5rem;
+  }
+  
+  .flipbook-container-enhanced {
+    margin: 0.5rem 0;
+  }
+  
+  .flipbook-controls-enhanced {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+  
+  .control-btn-enhanced {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .pdf-page-render {
+    padding: 5px !important;
+  }
+  
+  .page-footer {
+    bottom: 3px;
+    right: 5px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flipbook-controls-enhanced {
+    flex-direction: column;
+  }
+  
+  .center-controls-group {
+    order: -1;
+    width: 100%;
+  }
+  
+  .quick-navigation-panel {
+    display: none; /* Hide on very small screens */
+  }
+}
+
+/* Animation Keyframes */
+@keyframes containerAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes controlsSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

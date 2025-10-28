@@ -34,12 +34,12 @@
         }
 
         /* Header Styles */
-        header {
+        /* header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 20px 0;
             box-shadow: var(--shadow);
-        }
+        } */
 
         .header-content {
             display: flex;

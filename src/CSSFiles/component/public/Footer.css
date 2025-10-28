@@ -1,0 +1,156 @@
+.public-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #001b3a;
+}
+
+/* 🔶 Top CTA */
+.public-footer-cta {
+  background-color: #ffc107;
+  color: #001b3a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 40px;
+  border-radius: 10px;
+  position: relative;
+  bottom: 60px;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.public-footer-cta h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.public-footer-cta p {
+  margin: 5px 0 0;
+  font-weight: 500;
+}
+
+.public-footer-cta-btn {
+  background: #001b3a;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.public-footer-cta-btn:hover {
+  background: #003366;
+}
+
+/* 🔵 Main Section */
+.public-footer-main {
+ width: 80%;
+}
+
+.public-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.public-footer-col h3 {
+    font-weight: 900;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.public-footer-col h4 {
+  font-weight: 900;
+  margin-bottom: 15px;
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.public-footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.public-footer-col a {
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.public-footer-col a:hover {
+  color: #ffc107;
+}
+
+.public-footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.public-footer-col ul li {
+  margin-bottom: 8px;
+  width: 47%;
+}
+
+.public-footer-social a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+  color: #ffc107;
+}
+
+.public-footer-social a:hover {
+  color: #fff;
+}
+
+.public-footer-social-icons{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 13px;
+    color: #ffc107;
+}
+
+.review-img {
+  width: 120px;
+  margin-top: 10px;
+}
+
+/* 🔹 Bottom Bar */
+.public-footer-bottom {
+    width: 80%;
+  text-align: center;
+  /* background-color: #001531; */
+  padding: 12px;
+  font-size: 14px;
+  border-top: 1px solid #002b5c;
+}
+
+.public-footer-bottom span {
+  color: #ffc107;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .public-footer-cta {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .public-footer-columns {
+    text-align: center;
+  }
+
+  .public-footer-col ul {
+    display: inline-block;
+    text-align: left;
+  }
+}
