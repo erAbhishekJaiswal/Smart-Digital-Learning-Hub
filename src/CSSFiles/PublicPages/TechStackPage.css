@@ -28,8 +28,7 @@
 }
 
 .techstack-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 10px;
   padding: 20px 20px;
   min-height: 40vh;
 }
@@ -54,7 +53,27 @@
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><path d="M500,50 C600,0 700,100 800,50 C900,0 1000,100 1000,100 L1000,0 L0,0 L0,100 C100,100 200,0 300,50 C400,100 500,100 500,50 Z"/></svg>');
   background-size: cover;
 }
+.techstack-hero-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.addnew-techstack-button-for-admin{
+  background: #0051ff;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.add-tech-stack-button{
+  color: #FFFFFF;
+  text-decoration-line: none;
+}
 .techstack-hero-title {
   font-size: 3rem;
   font-weight: 700;
@@ -72,7 +91,7 @@
 
 /* Content Section */
 .techstack-content-section {
-  padding: 60px 0;
+  /* padding: 60px 0; */
   min-height: 60vh;
 }
 

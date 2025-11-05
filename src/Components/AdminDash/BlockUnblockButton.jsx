@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import '../Styles/AdminStyle/BlockUnblockButton.css';
-
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 const BlockUnblockButton = ({ user, onStatusChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
+  // console.log(user);
+  
   const handleStatusChange = async (newStatus) => {
     setIsLoading(true);
+    console.log('new status',newStatus);
     
     // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await axios.put(`http://localhost:5000/api/v1/users/${user._id}/status`, { status: newStatus });
+      if (response.status === 200) {
+        toast.success('User status updated successfully');
+      } else {
+        toast.error('Failed to update user status');
+      }
       onStatusChange(user.id, newStatus);
       setShowConfirm(false);
     } catch (error) {
@@ -51,7 +60,7 @@ const BlockUnblockButton = ({ user, onStatusChange }) => {
       }
     };
 
-    return configs[user.status] || configs.active;
+    return configs[user.currentStatus] || configs.active;
   };
 
   const config = getButtonConfig();

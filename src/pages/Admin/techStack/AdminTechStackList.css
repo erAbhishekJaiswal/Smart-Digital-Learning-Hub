@@ -1,0 +1,50 @@
+.techstack-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.techstack-table th,
+.techstack-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.techstack-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.btn-edit,
+.btn-delete {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.add-tech-stack-button {
+  display: inline-block;
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.add-tech-stack-button:hover {
+  background-color: #0056b3;
+}

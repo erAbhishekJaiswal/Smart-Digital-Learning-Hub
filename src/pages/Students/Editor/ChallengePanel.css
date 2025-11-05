@@ -1,0 +1,180 @@
+/* styles/ChallengePanel.css */
+.student-challenge-panel {
+  background: #2d2d2d;
+  border-top: 1px solid #404040;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.student-challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #252526;
+  border-bottom: 1px solid #404040;
+}
+
+.student-challenge-title {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.student-challenge-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.student-nav-btn {
+  background: #404040;
+  border: none;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.student-nav-btn:hover:not(:disabled) {
+  background: #505050;
+  color: white;
+}
+
+.student-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.student-challenge-counter {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.student-challenge-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.student-challenge-card {
+  background: #3c3c3c;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid #007acc;
+}
+
+.student-challenge-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.student-difficulty-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.student-beginner {
+  background: #d4edda;
+  color: #155724;
+}
+
+.student-intermediate {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.student-advanced {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.student-challenge-id {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.student-challenge-name {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.student-challenge-description {
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.student-requirements-title {
+  color: #00ff00;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.student-requirements-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.student-requirement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.student-check-icon {
+  color: #00ff00;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.student-challenge-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.student-submit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.student-submit-btn:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.student-hint-btn {
+  background: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.student-hint-btn:hover {
+  background: #e0a800;
+  transform: translateY(-1px);
+}

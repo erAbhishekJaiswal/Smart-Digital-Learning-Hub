@@ -319,6 +319,12 @@ width: 90%;
   padding: 10px;
 }
 
+.elibrary__book-title-rating-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .elibrary__book-title {
   font-size: 1rem;
   font-weight: 600;
@@ -376,7 +382,7 @@ width: 90%;
 }
 
 .elibrary__action-btn {
-  width: 90px;
+  width: 80px;
   padding: 10px;
   border: none;
   border-radius: 8px;
@@ -389,6 +395,37 @@ width: 90%;
   justify-content: center;
   gap: 8px;
 }
+
+.elibrary__techstack-group {
+  margin-bottom: 0.6rem;
+}
+
+.elibrary__subcategory-list {
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.elibrary__subcategory-item {
+  background: transparent;
+  border: none;
+  color: #555;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.elibrary__subcategory-item:hover {
+  color: #007bff;
+}
+
+.elibrary__subcategory-item.active {
+  color: #007bff;
+  font-weight: bold;
+}
+
 
 .elibrary__read-btn {
   background: var(--primary);

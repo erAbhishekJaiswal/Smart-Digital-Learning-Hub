@@ -1,18 +1,36 @@
 // components/Sidebar.js
 import React from 'react';
 import '../../CSSFiles/Admin/AdminDashboard.css';
-import { MdDashboard, MdPeople, MdLibraryBooks, MdPayment, MdInsights, MdSettings, MdSupportAgent } from 'react-icons/md';
-
+import { MdDashboard, MdPersonOutline , MdLibraryBooks, MdLogout, MdSupportAgent } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { IoMdBook } from "react-icons/io";
+import { LiaCertificateSolid } from "react-icons/lia";
+import { FaCode } from "react-icons/fa";
+import { RiChatAiLine } from "react-icons/ri";
+import { FaArrowTrendUp } from "react-icons/fa6";
+import {toast} from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import {clearStorage} from '../../utils/localstorage';
 const Sidebar = ({ isOpen, onClose, darkMode }) => {
+  const navigate = useNavigate();
   const menuItems = [
-    { icon: <MdDashboard />, label: 'Dashboard', active: true },
-    { icon: <MdPeople />, label: 'Users' },
-    { icon: <MdLibraryBooks />, label: 'Courses' },
-    { icon: <MdPayment />, label: 'Revenue' },
-    { icon: <MdInsights />, label: 'Analytics' },
-    { icon: <MdSettings />, label: 'Settings' },
-    { icon: <MdSupportAgent />, label: 'Support' }
+    { icon: <MdDashboard />, label: 'Dashboard', active: false,  path: '/student/'},
+    { icon: <MdPersonOutline />, label: 'My Profile', path: '/student/profile' },
+    { icon: <IoMdBook />, label: 'Books', path: '/student/books' },
+    { icon: < FaArrowTrendUp/>, label: 'Trending', path: '/' },
+    { icon: <LiaCertificateSolid />, label: 'Cirtificates', path: '/student/certificates' },
+    { icon: <FaCode />, label: 'Code Editor', path: '/student/codeediter' },
+    { icon: <MdLibraryBooks />, label: 'My Tests', path: '/student/mytests' },
+    { icon: <RiChatAiLine />, label: 'Ask to AI', path: '/student/asktoai' },
+    { icon: <MdSupportAgent />, label: 'Support', path: '/student/support' }
   ];
+
+  const handleLogout = () => {
+    // Perform logout logic here
+    clearStorage();
+    toast.success('Logout successful');
+    navigate('/');
+  };
 
   return (
     <>
@@ -29,14 +47,14 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
         
         <nav className="admin-sidebar__nav">
           {menuItems.map((item, index) => (
-            <a
+            <Link
               key={index}
-              href="#"
+              to={item.path}
               className={`admin-sidebar__nav-item ${item.active ? 'admin-sidebar__nav-item--active' : ''}`}
             >
               <span className="admin-sidebar__nav-icon">{item.icon}</span>
               <span className="admin-sidebar__nav-label">{item.label}</span>
-            </a>
+            </Link>
           ))}
         </nav>
         
@@ -47,6 +65,9 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
               <div className="admin-sidebar__user-name">John Doe</div>
               <div className="admin-sidebar__user-role">Administrator</div>
             </div>
+              <button onClick={handleLogout} className="admin-sidebar__logout-btn">
+              <MdLogout />
+            </button>
           </div>
         </div>
       </aside>

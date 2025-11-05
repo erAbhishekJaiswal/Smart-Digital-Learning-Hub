@@ -9,3 +9,6 @@ export const removeToken = () => sessionStorage.removeItem('token');
 
 // get role of user
 export const getUserRole = () => sessionStorage.getItem('role');
+
+// clear the storage at logout
+export const clearStorage = () => sessionStorage.clear();

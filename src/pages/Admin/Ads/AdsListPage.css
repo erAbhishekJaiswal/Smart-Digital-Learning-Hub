@@ -1,0 +1,217 @@
+/* AdsListPage.css */
+
+.ads-list-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.created-new-ad-button{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.ads-list-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.ads-list-btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  margin-bottom: 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ads-list-btn:hover {
+  background-color: #0056b3;
+}
+
+.ads-list-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.ads-list-filters input,
+.ads-list-filters select {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 180px;
+  transition: 0.3s;
+}
+
+.ads-list-filters input:focus,
+.ads-list-filters select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.ads-list-loading,
+.ads-list-empty,
+.ads-list-message {
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  color: #555;
+}
+
+.ads-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.ads-list-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.ads-list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.ads-list-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.ads-list-info {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.ads-list-info h3 {
+  font-size: 1rem;
+  /* margin-bottom: 0.5rem; */
+  color: #333;
+}
+
+.ads-list-category,
+.ads-list-price,
+.ads-list-status {
+  /* margin: 0.2rem 0; */
+  font-size: 0.95rem;
+}
+
+.ads-list-price-status{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ads-list-price {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.ads-list-status {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status-active { background-color: #d4edda; color: #155724; }
+.status-pending { background-color: #fff3cd; color: #856404; }
+.status-sold { background-color: #f8d7da; color: #721c24; }
+.status-expired { background-color: #e2e3e5; color: #6c757d; }
+
+.ads-list-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #eee;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.ads-list-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.ads-list-pagination button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ads-list-pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.ads-list-pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.ads-list-pagination span {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ads-list-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ads-list-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .ads-list-pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

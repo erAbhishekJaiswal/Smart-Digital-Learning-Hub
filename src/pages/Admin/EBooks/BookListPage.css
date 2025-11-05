@@ -1,0 +1,178 @@
+.book-list-container {
+  margin: 2rem;
+  padding: 1rem;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.created-new-book-button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.book-list-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #222;
+}
+
+.book-list-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.book-list-btn{
+  padding: 0.6rem 1.2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.book-list-filters input,
+.book-list-filters select {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.book-list-filters input:focus,
+.book-list-filters select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.book-list-loading,
+.book-list-empty {
+  text-align: center;
+  color: #555;
+  margin: 2rem 0;
+}
+
+.book-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.book-list-table th,
+.book-list-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.book-list-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.book-list-img {
+  display: block;
+  max-width: 60px;
+  height: auto;
+}
+
+.btn-edit,
+.btn-delete {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+
+.book-list-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-top: 1px solid #eee;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #222;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.book-list-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.book-list-pagination button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-list-pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.book-list-pagination button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.book-list-message {
+  text-align: center;
+  color: #555;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .book-list-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

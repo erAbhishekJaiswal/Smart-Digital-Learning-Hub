@@ -32,6 +32,17 @@ import EbookViewerPage from './Admin/eLibrary/EbookViewerPage';
 import Header from '../Components/PublicComp/Header';
 import FlipBook from '../Components/FlipBook';
 import UploadBookForm from './Admin/EBooks/UploadBookForm';
+import PdfBookReader from './PdfBookReader/PdfBookReader';
+import CreateAdPage from './Admin/Ads/CreateAdPage';
+import AdsListPage from './Admin/Ads/AdsListPage';
+import BookListPage from './Admin/EBooks/BookListPage';
+import AddQuestion from './Admin/test/AddQuestion';
+import CreateTest from './Admin/test/CreateTest';
+import TakeTest from './Students/test/TakeTest';
+import TestList from './Admin/test/TestList';
+import TestAttempt from './Admin/test/TestAttempt';
+import CodeEditorPage from './Students/Editor/CodeEditorPage';
+import JobPortal from './PublicPages/JobPortal';
 const MainPage = () => {
   return (
     <>
@@ -67,14 +78,27 @@ const MainPage = () => {
                     <Route path="/techstack/:categoryId/:subcategoryName" element={<TechSubCategoryPage />} />
                     {/* <Route path='/course' element={<AddEditCourse />} /> */}
 
+
+
+                  {/****************************Student Routes *********************/}
+                  <Route path="/codeeditor" element={<CodeEditorPage />} />
+                  <Route path="/pdfbooks/:publicId" element={<PdfBookReader />} />
+                  <Route path="/testattempt/:bookId" element={<TestAttempt />} />
+                  <Route path="/jobportal" element={<JobPortal />} />
+
                   {/*********************Admin Courses Routes *********************/}
-                    <Route path='/addnewcourse' element={<CreateUpdate />} />
-                    <Route path='/courselist' element={<CourseList />} />
-                    <Route path='/ebooks' element={<ELibrary />} />
-                    <Route path='/ebooks/detail' element={<EbookDetails />} />
-                    <Route path='/ebooks/viewer' element={<EbookViewerPage />} />
-                    <Route path='/flipbook/:publicId' element={<FlipBook />} />
-                  <Route path="/uploadpdf" element={<UploadBookForm />} />
+
+                    {/* Working pages but not intigrate with api */}
+                    {/* <Route path='/ebooks' element={<ELibrary />} /> // not use now */}
+                    {/* <Route path='/ebooks/detail' element={<EbookDetails />} /> // not use now */}
+                    {/* <Route path='/ebooks/viewer' element={<EbookViewerPage />} />  // not use now */}
+                    {/* <Route path='/flipbook/:publicId' element={<FlipBook />} /> // not use now */}
+                     {/* <Route path="/test/createtest" element={<CreateTest />} /> // not use now */}
+                    {/* <Route path="/test/taketest/:testId" element={<TakeTest testId={window.location.pathname.split("/").pop()} />} /> // not use now */}
+
+
+                    
+                  
                 </Routes>
               <Footer />
             </PublicRoute>

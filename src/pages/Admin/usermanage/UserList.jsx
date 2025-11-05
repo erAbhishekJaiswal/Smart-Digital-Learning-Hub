@@ -456,68 +456,78 @@ const UserList = () => {
   // Sample users data (adapted to new schema)
   useEffect(() => {
     
-    const sampleUsers = [
-      {
-        _id: '1',
-        name: 'John Smith',
-        email: 'john.smith@example.com',
-        role: 'admin',
-        curruntStatus: 'active',
-        createdAt: '2024-01-15',
-        // lastLogin: '2024-03-20',   // optional if you track it
-        profileImage: '/images/avatars/user1.jpg',
-        phone: '+1 (555) 123-4567',
-        isVerified: true,
-        location: 'New York, USA',
-        skills: ['JavaScript', 'React']
-      },
-      {
-        _id: '2',
-        name: 'Sarah Johnson',
-        email: 'sarah.j@example.com',
-        role: 'student',
-        curruntStatus: 'active',
-        createdAt: '2023-11-20',
-        profileImage: '/images/avatars/user2.jpg',
-        phone: '+1 (555) 234-5678',
-        isVerified: true,
-        location: 'London, UK',
-        skills: ['Python', 'Django']
-      },
-      {
-        _id: '3',
-        name: 'Mike Wilson',
-        email: 'mike.wilson@example.com',
-        role: 'mentor',
-        curruntStatus: 'inactive',
-        createdAt: '2024-02-10',
-        profileImage: '/images/avatars/user3.jpg',
-        phone: '+1 (555) 345-6789',
-        isVerified: false,
-        location: 'Berlin, Germany',
-        skills: ['Go', 'Kubernetes']
-      },
-      {
-        _id: '4',
-        name: 'Emily Davis',
-        email: 'emily.davis@example.com',
-        role: 'employer',
-        curruntStatus: 'active',
-        createdAt: '2023-12-05',
-        profileImage: '/images/avatars/user4.jpg',
-        phone: '+1 (555) 456-7890',
-        isVerified: true,
-        location: 'Toronto, Canada',
-        skills: ['Business', 'HR']
-      }
-    ];
+    // const sampleUsers = [
+    //   {
+    //     _id: '1',
+    //     name: 'John Smith',
+    //     email: 'john.smith@example.com',
+    //     role: 'admin',
+    //     curruntStatus: 'active',
+    //     createdAt: '2024-01-15',
+    //     // lastLogin: '2024-03-20',   // optional if you track it
+    //     profileImage: '/images/avatars/user1.jpg',
+    //     phone: '+1 (555) 123-4567',
+    //     isVerified: true,
+    //     location: 'New York, USA',
+    //     skills: ['JavaScript', 'React']
+    //   },
+    //   {
+    //     _id: '2',
+    //     name: 'Sarah Johnson',
+    //     email: 'sarah.j@example.com',
+    //     role: 'student',
+    //     curruntStatus: 'active',
+    //     createdAt: '2023-11-20',
+    //     profileImage: '/images/avatars/user2.jpg',
+    //     phone: '+1 (555) 234-5678',
+    //     isVerified: true,
+    //     location: 'London, UK',
+    //     skills: ['Python', 'Django']
+    //   },
+    //   {
+    //     _id: '3',
+    //     name: 'Mike Wilson',
+    //     email: 'mike.wilson@example.com',
+    //     role: 'mentor',
+    //     curruntStatus: 'inactive',
+    //     createdAt: '2024-02-10',
+    //     profileImage: '/images/avatars/user3.jpg',
+    //     phone: '+1 (555) 345-6789',
+    //     isVerified: false,
+    //     location: 'Berlin, Germany',
+    //     skills: ['Go', 'Kubernetes']
+    //   },
+    //   {
+    //     _id: '4',
+    //     name: 'Emily Davis',
+    //     email: 'emily.davis@example.com',
+    //     role: 'employer',
+    //     curruntStatus: 'active',
+    //     createdAt: '2023-12-05',
+    //     profileImage: '/images/avatars/user4.jpg',
+    //     phone: '+1 (555) 456-7890',
+    //     isVerified: true,
+    //     location: 'Toronto, Canada',
+    //     skills: ['Business', 'HR']
+    //   }
+    // ];
 
-    setIsLoading(true);
-    setTimeout(() => {
-      setUsers(sampleUsers);
-      setFilteredUsers(sampleUsers);
-      setIsLoading(false);
-    }, 1000);
+    const fatchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/v1/users/'); // Replace with your API endpoint
+        const data = await response.json();
+        console.log(data);
+        
+        setUsers(data);
+        setFilteredUsers(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fatchUsers();
   }, []);
 
   // Apply filters & sorting
@@ -619,8 +629,8 @@ const UserList = () => {
 
   const getStats = () => {
     const total = users.length;
-    const active = users.filter(u => u.curruntStatus === 'active').length;
-    const inactive = users.filter(u => u.curruntStatus === 'inactive').length;
+    const active = users.filter(u => u.currentStatus === 'active').length;
+    const inactive = users.filter(u => u.currentStatus === 'inactive').length;
     return { total, active, inactive };
   };
 
@@ -669,7 +679,7 @@ const UserList = () => {
               Manage your users, roles, and permissions
             </p>
           </div>
-          <div className="ecom-user-management-page__header-actions">
+          {/* <div className="ecom-user-management-page__header-actions">
             <button
               className="ecom-user-management-page__export-btn"
               onClick={exportUsers}
@@ -681,7 +691,7 @@ const UserList = () => {
               <i className="fas fa-plus"></i>
               Add User
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Stats Cards */}

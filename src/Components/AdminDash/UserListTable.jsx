@@ -292,13 +292,16 @@ import BlockUnblockButton from '../AdminDash/BlockUnblockButton';
 import '../Styles/AdminStyle/UserListTable.css';
 import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
-
+import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-hot-toast';
+import axios from 'axios';
 const UserListTable = ({
   users,
   onSort,
   sortConfig,
   onStatusChange
 }) => {
+  const navigate = useNavigate();
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -347,6 +350,24 @@ const UserListTable = ({
       : <i className="fas fa-sort-down ecom-user-table__sort-icon ecom-user-table__sort-icon--active"></i>;
   };
 
+  const handleViewProfile = (id) =>{
+    navigate(`/admin/userprofile/${id}`);
+  }
+  const handleDeleteUser = async (id) =>{
+    // Implement delete user functionality here
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/v1/users/${id}`);
+      if (response.status === 200) {
+        toast.success('User deleted successfully');
+        // Optionally, refresh the user list or update state here
+      } else {
+        toast.error('Failed to delete user');
+      }
+    } catch (error) {
+     console.error("Error deleting user:", error); 
+    }
+  }
+
   return (
     <div className="ecom-user-table">
       <div className="ecom-user-table__container">
@@ -366,10 +387,10 @@ const UserListTable = ({
                   <SortIcon columnKey="role" />
                 </span>
               </th>
-              <th className="ecom-user-table__th ecom-user-table__th--sortable" onClick={() => onSort('curruntStatus')}>
+              <th className="ecom-user-table__th ecom-user-table__th--sortable" onClick={() => onSort('currentStatus')}>
                 <span className="ecom-user-table__th-content">
                   Status
-                  <SortIcon columnKey="curruntStatus" />
+                  <SortIcon columnKey="currentStatus" />
                 </span>
               </th>
               <th className="ecom-user-table__th ecom-user-table__th--sortable" onClick={() => onSort('createdAt')}>
@@ -409,15 +430,15 @@ const UserListTable = ({
 
                 <td className="ecom-user-table__td">
                   <div className="ecom-user-table__contact">
-                    <div className="ecom-user-table__phone">{user.phone || '—'}</div>
+                    <div className="ecom-user-table__phone">{user.email || '—'}</div>
                     <div className="ecom-user-table__location">
-                      {user.location || 'No Location'}
+                      {user.mobile || 'No Phone Number'}
                     </div>
                   </div>
                 </td>
 
                 <td className="ecom-user-table__td">{getRoleBadge(user.role)}</td>
-                <td className="ecom-user-table__td">{getStatusBadge(user.curruntStatus)}</td>
+                <td className="ecom-user-table__td">{getStatusBadge(user.currentStatus)}</td>
                 <td className="ecom-user-table__td">
                   <div className="ecom-user-table__date">
                     {formatDate(user.createdAt)}
@@ -430,21 +451,23 @@ const UserListTable = ({
                       user={user}
                       onStatusChange={onStatusChange}
                     />
-                    <button
+                    {/* <button
                       className="ecom-user-table__action-btn ecom-user-table__action-btn--edit"
                       title="Edit User"
                     >
                       <FaEdit />
-                    </button>
+                    </button> */}
                     <button
                       className="ecom-user-table__action-btn ecom-user-table__action-btn--view"
                       title="View Profile"
+                      onClick={() => handleViewProfile(user._id)}
                     >
                       <FaEye />
                     </button>
                     <button
                       className="ecom-user-table__action-btn ecom-user-table__action-btn--delete"
                       title="Delete User"
+                      onClick={() => handleDeleteUser(user._id)}
                     >
                       <FaTrashAlt />
                     </button>

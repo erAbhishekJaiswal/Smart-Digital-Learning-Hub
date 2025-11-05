@@ -10,8 +10,10 @@ import {
   FaGoogle,
   FaTwitter,
 } from "react-icons/fa";
-import { loginUser } from "../../Api/AuthApi";
+// import { loginUser } from "../../Api/AuthApi";
 import { toast } from "react-hot-toast";
+import axios from "axios";
+
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -39,9 +41,10 @@ const Login = () => {
     e.preventDefault();
     try {
         setLoading(true);
-    const res = await loginUser(formData);
+    const resdata = await axios.post(`http://localhost:5000/api/v1/auth/login`, formData) // loginUser(formData);
     // alert("Login successful!");
-    console.log(res);
+    // console.log(res);
+    const res = resdata.data;
     toast.success("Login successful!");
     if (res.role==="admin") {
       setLoading(false);

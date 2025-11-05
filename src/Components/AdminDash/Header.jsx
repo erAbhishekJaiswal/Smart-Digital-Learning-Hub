@@ -17,11 +17,11 @@ const Header = ({ onMenuClick, darkMode, onThemeToggle }) => {
         </button>
         {/* <h1 className="admin-header__title">Admin Dashboard</h1> */}
         <div className="navbar-logo-section">
-          <div className="logo-wrapper">
-            <div className="logo-icon">🎓</div>
-            <div className="logo-content">
-              <h1 className="logo-title">Smart Digital Learning Hub</h1>
-              <p className="logo-tagline">Learn Smarter, Achieve Faster</p>
+          <div className="admin-header__logo-wrapper">
+            <div className="admin-header__logo-icon">🎓</div>
+            <div className="admin-header__logo-content">
+              <h1 className="admin-header__logo-title">Smart Digital Learning Hub</h1>
+              <p className="admin-header__logo-tagline">Learn Smarter, Achieve Faster</p>
             </div>
           </div>
         </div>

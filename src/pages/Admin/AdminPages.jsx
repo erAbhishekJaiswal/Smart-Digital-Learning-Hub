@@ -6,8 +6,18 @@ import Sidebar from '../../Components/AdminDash/Sidebar'
 import Header from '../../Components/AdminDash/Header'
 import CreateTechStack from './techStack/CreateTechStack'
 import AdminProfile from './AdminProfile'
-import AddEditCourse from './course/AddEditCourse'
+// import AddEditCourse from './course/AddEditCourse'
 import CourseList from './course/CourseList'
+import CreateAdPage from './Ads/CreateAdPage'
+import AdsListPage from './Ads/AdsListPage'
+import UploadBookForm from './EBooks/UploadBookForm'
+import BookListPage from './EBooks/BookListPage';
+import TestList from './test/TestList';
+import AddQuestion from './test/AddQuestion';
+import PdfBookReader from '../PdfBookReader/PdfBookReader'
+import CreateUpdate from './course/CreateUpdate'
+import AdminTechStackList from './techStack/AdminTechstacklist'
+
 const AdminPages = () => {
       const [sidebarOpen, setSidebarOpen] = useState(false);
       const [darkMode, setDarkMode] = useState(false);
@@ -36,9 +46,27 @@ const AdminPages = () => {
         <Route path='/dashboard' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/userlist' element ={<UserList dark={darkMode}  />} />
         <Route path='/createTeckStack' element={<CreateTechStack dark={darkMode} />} />
-        <Route path='/addnewcourse' element={<AddEditCourse dark={darkMode} />} />
+        <Route path='/techstack' element ={<AdminTechStackList dark={darkMode} />} />
+        {/* <Route path='/addnewcourse' element={<AddEditCourse dark={darkMode} />} /> */}
+
+        <Route path='/create/course' element={<CreateUpdate dark={darkMode} />} />
         <Route path='/courselist' element={<CourseList dark={darkMode} />} />
         <Route path='/profile' element={<AdminProfile dark={darkMode} />} />
+
+        {/* ads */}
+        <Route path='/create/ads' element={<CreateAdPage dark={darkMode} />} />
+        <Route path='/adslist' element={<AdsListPage dark={darkMode} />} />
+
+        {/* books */}
+        <Route path='/create/books' element={<UploadBookForm dark={darkMode} />} />
+        <Route path='/bookslist' element={<BookListPage dark={darkMode} />} />
+        <Route path="/pdfbooks/:publicId" element={<PdfBookReader />} />
+
+        {/* Test */}
+        <Route path="/test/addquestion/:testId" element={<AddQuestion />} />
+        <Route path="/testlist" element={<TestList />} />
+
+        {/* <Route path='/create/ads' element={<CreateTechStack dark={darkMode} />} /> */}
     </Routes>
     </div>
     </div>

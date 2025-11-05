@@ -126,7 +126,7 @@ const CourseList = () => {
   const categories = [...new Set(courses.map(course => course.category))];
 
   const handleaddtonewcourse = () => {
-    navigate('/admin/addnewcourse');
+    navigate('/admin/create/course');
   }
 
   if (loading) {

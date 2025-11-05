@@ -6,7 +6,7 @@
 }
 
 .login-page {
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  /* background: linear-gradient(135deg, #6e8efb, #a777e3); */
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -38,13 +38,12 @@
 .login-header {
   background: linear-gradient(135deg, #6e8efb, #a777e3);
   color: white;
-  padding: 30px 20px;
+  padding: 10px 10px;
   text-align: center;
 }
 
 .login-header h1 {
   font-size: 28px;
-  margin-bottom: 10px;
   font-weight: 600;
 }
 
@@ -58,7 +57,7 @@
 }
 
 .login-page-form-group {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   position: relative;
 }
 
@@ -141,7 +140,6 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 20px;
 }
 
 .login-page-login-button:hover {
@@ -176,7 +174,6 @@
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-bottom: 25px;
 }
 
 .login-page-social-btn {

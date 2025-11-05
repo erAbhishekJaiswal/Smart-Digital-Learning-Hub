@@ -1,0 +1,76 @@
+/* styles/CodeEditor.css */
+.student-code-editor-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.student-editor-active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.student-editor-hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.student-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #2d2d2d;
+  border-bottom: 1px solid #404040;
+}
+
+.student-editor-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.student-language-icon {
+  background: #007acc;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.student-file-type {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.student-editor-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.student-editor-btn {
+  background: #404040;
+  border: none;
+  color: #ccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.student-editor-btn:hover {
+  background: #505050;
+  color: white;
+}
+
+.student-monaco-container {
+  height: calc(100% - 60px);
+}

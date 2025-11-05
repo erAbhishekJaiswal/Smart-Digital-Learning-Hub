@@ -8,13 +8,19 @@ import { MdPayment } from "react-icons/md";
 import { MdInsights } from "react-icons/md";
 import { MdSettings } from "react-icons/md";
 import { MdSupportAgent } from "react-icons/md";
+import { MdOutlineQuiz } from "react-icons/md";
+import { FaBook } from "react-icons/fa6";
+import { FaAd } from "react-icons/fa";
+import { SiCoursera } from "react-icons/si";
 const Sidebar = ({ isOpen, onClose, darkMode }) => {
   const menuItems = [
     { icon: <MdDashboard />, label: 'Dashboard', path: '/admin/dashboard' }, //active: true,
     { icon: <MdPeople />, label: 'Users', path: '/admin/userlist' },
-    { icon: <MdLibraryBooks />, label: 'TechStack', path: '/techstack' },
-    { icon:  <MdPayment />, label: 'Revenue', path: '/admin/revenue' },
-    { icon: <MdInsights />, label: 'Analytics', path: '/admin/analytics' },
+    { icon: <MdLibraryBooks />, label: 'TechStack', path: '/admin/techstack' },
+    { icon: <SiCoursera />, label: 'Courses', path: '/admin/courselist' },
+    { icon: <FaAd />, label: 'Ads List', path: '/admin/adslist' },
+    { icon:  <FaBook />, label: 'Book List', path: '/admin/bookslist' },
+    { icon: <MdOutlineQuiz />, label: 'Test List', path: '/admin/testlist' },
     { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
     { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }
   ];

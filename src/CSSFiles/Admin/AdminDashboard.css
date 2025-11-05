@@ -61,7 +61,7 @@ body.dark-mode {
 /* Header Styles */
 .admin-header {
   background: var(--light-card);
-  padding: 20px 30px;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,7 +107,35 @@ body.dark-mode {
   font-weight: 700;
   color: var(--light-text);
 }
+/* student header */
+.student-header__logo-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.student-header__logo-title{
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* color: var(--light-text); */
+}
+.dark-mode .student-header__title {
+  color: var(--dark-text);
+}
+
+
+/* Admin Header */
+.admin-header__logo-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-header__logo-title{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--light-text);
+}
 .dark-mode .admin-header__title {
   color: var(--dark-text);
 }
@@ -256,6 +284,17 @@ body.dark-mode {
   color: var(--dark-text);
 }
 
+.admin-sidebar__logout-btn{
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+
+
 .admin-sidebar__nav {
   flex: 1;
   padding: 5px 0;
@@ -320,6 +359,7 @@ body.dark-mode {
 .admin-sidebar__user {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
 }
 

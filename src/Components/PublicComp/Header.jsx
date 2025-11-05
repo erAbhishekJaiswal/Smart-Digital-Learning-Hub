@@ -6,7 +6,12 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { IoLogoTwitter } from "react-icons/io";
 import { TfiYoutube } from "react-icons/tfi";
 import { FaMobileAlt } from "react-icons/fa";
+import { isUserLoggedIn, getUserRole } from "../../utils/localstorage";
+import {useNavigate} from "react-router-dom";
+import { MdOutlineDashboard } from "react-icons/md";
+
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <header className="header-bar">
       {/* 🔹 Top Contact Bar */}
@@ -81,7 +86,10 @@ const Header = () => {
           </ul>
         </nav>
         
-          <button onClick={() => alert("Enquiry Clicked!")}>ENQUIRY NOW</button>
+          <button className="header-enquiry-button" onClick={() => alert("Enquiry Clicked!")}>ENQUIRY NOW</button>
+          {isUserLoggedIn() && getUserRole() === "admin" ? <button className="header-dashboard-button" title="Dashboard" onClick={() => navigate("/admin/dashboard")}><MdOutlineDashboard /></button> : ""}
+          {isUserLoggedIn() && getUserRole() === "student" ? <button  className="header-dashboard-button" title="Dashboard" onClick={() => navigate("/student/dashboard")}><MdOutlineDashboard /></button> : ""}
+          {!isUserLoggedIn() && <button className="header-login-button" onClick={() => navigate("/signin")}>Login/Signin</button> }
         </div>
       </div>
 
