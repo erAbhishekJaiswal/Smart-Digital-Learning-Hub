@@ -17,6 +17,7 @@ import AddQuestion from './test/AddQuestion';
 import PdfBookReader from '../PdfBookReader/PdfBookReader'
 import CreateUpdate from './course/CreateUpdate'
 import AdminTechStackList from './techStack/AdminTechstacklist'
+import AddCompany from './Job/AddCompany'
 
 const AdminPages = () => {
       const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -65,6 +66,9 @@ const AdminPages = () => {
         {/* Test */}
         <Route path="/test/addquestion/:testId" element={<AddQuestion />} />
         <Route path="/testlist" element={<TestList />} />
+
+        {/********************job Routes *********************/}
+        <Route path='/addcompany' element={<AddCompany dark={darkMode} />} />
 
         {/* <Route path='/create/ads' element={<CreateTechStack dark={darkMode} />} /> */}
     </Routes>

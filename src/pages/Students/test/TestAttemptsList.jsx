@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import './TestAttemptsList.css';
 import { GetMyTests } from "../../../Api/StudentApi/SApi"
+import axios from 'axios';
+import { isUserLoggedIn } from "../../../utils/localstorage";
+import { useNavigate } from 'react-router-dom';
 const TestAttemptsList = () => {
+  const navigate = useNavigate();
+  const token = isUserLoggedIn();
   const [attempts, setAttempts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -169,6 +174,23 @@ const TestAttemptsList = () => {
     // Simulate export functionality
     alert('Exporting attempts data...');
   };
+
+  const handleDownloadCertificate = async (attemptId) => {
+      try {
+    const response = await axios.get(
+      `http://localhost:5000/api/test/attempts/${attemptId}/certificate`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    // navigate(response.data.pdfUrl);
+    window.open(response.data.pdfUrl, '_blank');
+    // setCertificateLink(response.data.pdfUrl);
+  } catch (err) {
+    console.error("Certificate fetch failed:", err);
+    // setCertificateLink(null);
+  }
+  }
 
   const handleDeleteAttempt = async (attemptId) => {
     if (window.confirm('Are you sure you want to delete this attempt record?')) {
@@ -444,14 +466,14 @@ const TestAttemptsList = () => {
                   
                   <div className="attempt-card__actions">
                     {attempt.certificateUrl && (
-                      <a
-                        href={attempt.certificateUrl}
+                      <button
+                        onClick={() => handleDownloadCertificate(attempt._id)}
                         download
                         className="attempt-action attempt-action--certificate"
                         title="Download Certificate"
                       >
                         📥 Certificate
-                      </a>
+                      </button>
                     )}
                     
                     <button 
