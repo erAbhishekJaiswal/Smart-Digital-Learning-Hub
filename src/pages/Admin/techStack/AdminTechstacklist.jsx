@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./AdminTechstacklist.css";
+import "./AdminTechStackList.css";
 import "../../../CSSFiles/PublicPages/TechStackPage.css";
 import { getToken, getUserRole } from "../../../utils/localstorage";
 
