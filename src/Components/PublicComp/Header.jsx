@@ -192,6 +192,8 @@ const Header = () => {
           <nav className="header-bar-links">
             <ul>
               <li><button onClick={() => handleNavClick("/")}>Home</button></li>
+              <li><button onClick={() => handleNavClick("/")}>E-Learning</button></li>
+              <li><button onClick={() => handleNavClick("/jobportal")}>Jobs</button></li>
               <li><button onClick={() => handleNavClick("#about")}>About Us</button></li>
               <li><button onClick={() => handleNavClick("#services")}>Services</button></li>
               <li><button onClick={() => handleNavClick("#portfolio")}>Portfolio</button></li>
