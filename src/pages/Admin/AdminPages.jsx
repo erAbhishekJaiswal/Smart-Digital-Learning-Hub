@@ -18,6 +18,8 @@ import PdfBookReader from '../PdfBookReader/PdfBookReader'
 import CreateUpdate from './course/CreateUpdate'
 import AdminTechStackList from './techStack/AdminTechstacklist'
 import AddCompany from './Job/AddCompany'
+import ApplicationList from './Application/ApplicationList'
+import ResumeViewer from './Application/ResumeViewer'
 
 const AdminPages = () => {
       const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -69,7 +71,8 @@ const AdminPages = () => {
 
         {/********************job Routes *********************/}
         <Route path='/addcompany' element={<AddCompany dark={darkMode} />} />
-
+        <Route path='/applicationlist' element={<ApplicationList dark={darkMode} />} />
+        <Route path='/resume/:publicId' element={<ResumeViewer dark={darkMode} />} />
         {/* <Route path='/create/ads' element={<CreateTechStack dark={darkMode} />} /> */}
     </Routes>
     </div>

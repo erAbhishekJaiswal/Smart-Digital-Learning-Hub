@@ -63,6 +63,7 @@ const AdminTechStackList = () => {
 
           {/* ✅ Admin View: Table Format */}
           {token && role === "admin" ? (
+            <div className="techstack-table-container-box">
             <table className="techstack-table">
               <thead>
                 <tr>
@@ -102,6 +103,7 @@ const AdminTechStackList = () => {
                 ))}
               </tbody>
             </table>
+          </div>
           ) : (
             // ✅ Public View: Card Grid
             <div className="techstack-categories-grid">

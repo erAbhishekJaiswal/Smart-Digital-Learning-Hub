@@ -73,12 +73,18 @@
 .add-tech-stack-button{
   color: #FFFFFF;
   text-decoration-line: none;
+  font-size: 1rem;
 }
 .techstack-hero-title {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   position: relative;
+}
+
+.techstack-table-container-box{
+  width: 100%;
+  overflow: scroll;
 }
 
 .techstack-hero-subtitle {
@@ -462,15 +468,17 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .techstack-container {
-    padding: 0 15px;
+    padding: 0 5px;
   }
-  
+  .add-tech-stack-button{
+    font-size: 10px;
+  }
   .techstack-hero-section {
     padding: 60px 0 40px;
   }
   
   .techstack-hero-title {
-    font-size: 2.2rem;
+    font-size: 1.3rem;
   }
   
   .techstack-hero-subtitle {
@@ -522,7 +530,7 @@
   }
   
   .techstack-hero-title {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 }
 

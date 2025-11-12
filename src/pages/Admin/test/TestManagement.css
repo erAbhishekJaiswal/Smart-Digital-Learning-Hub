@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .test-management__title-section {
@@ -38,7 +38,7 @@
 }
 
 .test-management__title {
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   font-weight: 800;
   color: var(--light-text);
   margin-bottom: 8px;
@@ -50,7 +50,7 @@
 
 .test-management__subtitle {
   color: var(--light-text-secondary);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .test-management__create-btn {
@@ -127,7 +127,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid var(--light-border);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .tests-loading {
@@ -1559,6 +1559,9 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
+  }
+  .test-management__create-btn{
+    padding: 7px 15px;
   }
   
   .tests-table__header,

@@ -156,14 +156,14 @@ const CourseList = () => {
               onChange={handleSearchChange}
               className="course-search-input"
             />
-            <span className="search-icon">🔍</span>
+            {/* <span className="search-icon">🔍</span> */}
           </div>
 
           <button className='add-new-course' onClick={handleaddtonewcourse}>Add New Course</button>
         </div>
 
         <div className="filters-row">
-          <div className="filter-group">
+          <div className="course-filter-group">
             <label>Category</label>
             <select
               value={filters.category}
@@ -176,7 +176,7 @@ const CourseList = () => {
             </select>
           </div>
 
-          <div className="filter-group">
+          <div className="course-filter-group">
             <label>Level</label>
             <select
               value={filters.level}
@@ -189,7 +189,7 @@ const CourseList = () => {
             </select>
           </div>
 
-          <div className="filter-group">
+          <div className="course-filter-group">
             <label>Tech Stack</label>
             <select
               value={filters.techStack}
@@ -204,7 +204,7 @@ const CourseList = () => {
             </select>
           </div>
 
-          <div className="filter-group">
+          <div className="course-filter-group">
             <label>Live Code</label>
             <select
               value={filters.liveCodeEnabled}

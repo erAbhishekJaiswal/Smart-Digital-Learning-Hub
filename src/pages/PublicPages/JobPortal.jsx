@@ -148,7 +148,7 @@ const JobPortal = () => {
                     <div className="job-header">
                       <div className="company-logo">
                         <img
-                          src={job.company.logoUrl || "https://via.placeholder.com/50"}
+                          src={job.company.logoUrl || "https://cdn.pixabay.com/photo/2023/03/06/13/58/logo-7833521_1280.png"}
                           alt={job.company.name}
                           className="company-logo-img"
                         />
@@ -227,11 +227,11 @@ const JobPortal = () => {
           </div>
 
           {/* ✅ Ads Section */}
-          <div className="elibrary__ads-container">
+          {/* <div className="elibrary__ads-container">
             {ads.map((ad) => (
               <AdCard key={ad._id} ad={ad} />
             ))}
-          </div>
+          </div> */}
         </div>
       </main>
     </div>

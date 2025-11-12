@@ -47,6 +47,7 @@ body.dark-mode {
 .admin-dashboard__main {
   flex: 1;
   display: flex;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -115,10 +116,19 @@ body.dark-mode {
 }
 
 .student-header__logo-title{
-  font-size: 1.5rem;
+  display: none;
+  font-size: 1rem;
   font-weight: 700;
   /* color: var(--light-text); */
 }
+
+.student-header__logo-tagline{
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  /* color: var(--light-text); */
+}
+
 .dark-mode .student-header__title {
   color: var(--dark-text);
 }
@@ -134,7 +144,7 @@ body.dark-mode {
 .admin-header__logo-title{
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--light-text);
+  /* color: var(--light-text); */
 }
 .dark-mode .admin-header__title {
   color: var(--dark-text);

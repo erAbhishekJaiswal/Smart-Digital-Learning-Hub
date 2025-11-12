@@ -122,6 +122,7 @@ const BookListPage = () => {
         //     </div>
         //   ))}
         // </div>
+        <div className="book-list-table-container-box">
         <table className="book-list-table">
           <thead>
             <tr>
@@ -167,6 +168,7 @@ const BookListPage = () => {
             ))}
           </tbody>
         </table>
+      </div>
       )}
 
       {/* Pagination */}
