@@ -28,12 +28,12 @@ const Header = ({ onMenuClick, darkMode, onThemeToggle }) => {
       </div>
       
       <div className="admin-header__right">
-        <button 
+        {/* <button 
           className="admin-header__theme-btn"
           onClick={onThemeToggle}
         >
           {darkMode ? '☀️' : '🌙'}
-        </button>
+        </button> */}
         
         <div className="admin-header__search">
           <input 
