@@ -3,7 +3,7 @@ import axios from "axios";
 import "./BookListPage.css";
 import { useNavigate } from "react-router-dom";
 import { getUserRole, isUserLoggedIn } from "../../../utils/localstorage";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const BookListPage = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ const BookListPage = () => {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/v1/ebooks/admin", {
+      const res = await axios.get(`${BasseUrl}/ebooks/admin`, {
         params: { search, level, language, page },
       });
       setBooks(res.data.books);
@@ -40,7 +40,7 @@ const BookListPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this book?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/ebooks/${id}`);
+      await axios.delete(`${BasseUrl}/ebooks/${id}`);
       fetchBooks();
     } catch (err) {
       console.error("Delete failed:", err);

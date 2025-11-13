@@ -571,7 +571,7 @@ import React, { useState } from "react";
 import "./ApplyPopup.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const ApplyPopup = ({ job, isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -673,7 +673,7 @@ const ApplyPopup = ({ job, isOpen, onClose }) => {
       });
 
       const response = await axios.post(
-        "http://localhost:5000/api/v1/applications/",
+        `${BasseUrl}/applications/create`,
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },

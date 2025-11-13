@@ -5,6 +5,7 @@ import { GetMyTests } from "../../../Api/StudentApi/SApi"
 import axios from 'axios';
 import { isUserLoggedIn } from "../../../utils/localstorage";
 import { useNavigate } from 'react-router-dom';
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const TestAttemptsList = () => {
   const navigate = useNavigate();
   const token = isUserLoggedIn();
@@ -23,118 +24,6 @@ const TestAttemptsList = () => {
 
   const fetchAttempts = async () => {
     setLoading(true);
-    // Simulate API call
-    // await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Using your provided response data
-    // const mockAttempts = [
-    //   {
-    //     "_id": "6908920d848deec229d9b93d",
-    //     "testId": "6904c58fe42c99d6f46a80b3",
-    //     "userId": "68ecd9938ee926faf8cda99e",
-    //     "user": {
-    //       "name": "Rajesh Kumar",
-    //       "email": "rajesh@example.com",
-    //       "profileImage": "👨‍💼"
-    //     },
-    //     "test": {
-    //       "title": "JavaScript Fundamentals",
-    //       "subcategory": "Programming",
-    //       "difficulty": "Beginner",
-    //       "duration": 30,
-    //       "passingScore": 70
-    //     },
-    //     "totalQuestions": 3,
-    //     "correct": 1,
-    //     "wrong": 2,
-    //     "scorePercentage": 33.33333333333333,
-    //     "passed": false,
-    //     "attemptedAt": "2025-11-03T11:29:17.152Z",
-    //     "createdAt": "2025-11-03T11:29:17.158Z",
-    //     "updatedAt": "2025-11-03T11:29:17.158Z",
-    //     "__v": 0
-    //   },
-    //   {
-    //     "_id": "69089454848deec229d9b951",
-    //     "testId": "6904c58fe42c99d6f46a80b3",
-    //     "userId": "68ecd9938ee926faf8cda99e",
-    //     "user": {
-    //       "name": "Rajesh Kumar",
-    //       "email": "rajesh@example.com",
-    //       "profileImage": "👨‍💼"
-    //     },
-    //     "test": {
-    //       "title": "JavaScript Fundamentals",
-    //       "subcategory": "Programming",
-    //       "difficulty": "Beginner",
-    //       "duration": 30,
-    //       "passingScore": 70
-    //     },
-    //     "totalQuestions": 3,
-    //     "correct": 3,
-    //     "wrong": 0,
-    //     "scorePercentage": 100,
-    //     "passed": true,
-    //     "attemptedAt": "2025-11-03T11:39:00.613Z",
-    //     "createdAt": "2025-11-03T11:39:00.613Z",
-    //     "updatedAt": "2025-11-03T11:39:02.019Z",
-    //     "__v": 0,
-    //     "certificateUrl": "https://res.cloudinary.com/dm9g4lkx8/raw/upload/v1762169941/quiz/certificates/certificate_69089454848deec229d9b951.pdf"
-    //   },
-    //   {
-    //     "_id": "690898d8f33c4aaf0e561db8",
-    //     "testId": "6904c58fe42c99d6f46a80b3",
-    //     "userId": "68ecd9938ee926faf8cda99e",
-    //     "user": {
-    //       "name": "Rajesh Kumar",
-    //       "email": "rajesh@example.com",
-    //       "profileImage": "👨‍💼"
-    //     },
-    //     "test": {
-    //       "title": "JavaScript Fundamentals",
-    //       "subcategory": "Programming",
-    //       "difficulty": "Beginner",
-    //       "duration": 30,
-    //       "passingScore": 70
-    //     },
-    //     "totalQuestions": 3,
-    //     "correct": 2,
-    //     "wrong": 1,
-    //     "scorePercentage": 66.66666666666666,
-    //     "passed": false,
-    //     "attemptedAt": "2025-11-03T11:58:16.883Z",
-    //     "createdAt": "2025-11-03T11:58:16.890Z",
-    //     "updatedAt": "2025-11-03T11:58:16.890Z",
-    //     "__v": 0
-    //   },
-    //   {
-    //     "_id": "69089999f33c4aaf0e561dc0",
-    //     "testId": "6904c59fe42c99d6f46a80b5",
-    //     "userId": "68ecd9948ee926faf8cda99f",
-    //     "user": {
-    //       "name": "Priya Sharma",
-    //       "email": "priya@example.com",
-    //       "profileImage": "👩‍💼"
-    //     },
-    //     "test": {
-    //       "title": "React Advanced Concepts",
-    //       "subcategory": "Web Development",
-    //       "difficulty": "Advanced",
-    //       "duration": 45,
-    //       "passingScore": 80
-    //     },
-    //     "totalQuestions": 5,
-    //     "correct": 4,
-    //     "wrong": 1,
-    //     "scorePercentage": 80,
-    //     "passed": true,
-    //     "attemptedAt": "2025-11-03T12:01:29.883Z",
-    //     "createdAt": "2025-11-03T12:01:29.890Z",
-    //     "updatedAt": "2025-11-03T12:01:29.890Z",
-    //     "__v": 0,
-    //     "certificateUrl": "https://res.cloudinary.com/dm9g4lkx8/raw/upload/v1762170089/quiz/certificates/certificate_69089999f33c4aaf0e561dc0.pdf"
-    //   }
-    // ];
     const Attemptsdata = await GetMyTests();
     console.log("Attempt data :",Attemptsdata);
     
@@ -178,7 +67,7 @@ const TestAttemptsList = () => {
   const handleDownloadCertificate = async (attemptId) => {
       try {
     const response = await axios.get(
-      `http://localhost:5000/api/test/attempts/${attemptId}/certificate`,
+      `https://learning-backend-rust.vercel.app/api/test/attempts/${attemptId}/certificate`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }

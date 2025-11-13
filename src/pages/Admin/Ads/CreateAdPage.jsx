@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./CreateAdPage.css"; // import custom CSS
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 // === Helper functions ===
 const getCloudinarySignature = async (folder = "ads_images") => {
-  const res = await axios.get(`http://localhost:5000/api/cloudinary/signature?folder=${folder}`);
+  const res = await axios.get(`https://learning-backend-rust.vercel.app/api/cloudinary/signature?folder=${folder}`);
   return res.data;
 };
 
@@ -80,7 +80,7 @@ const CreateAdPage = () => {
         tags: formData.tags.split(",").map((t) => t.trim()),
       };
 
-      const res = await axios.post("http://localhost:5000/api/v1/ads/", adPayload);
+      const res = await axios.post(`${BasseUrl}/ads/`, adPayload);
 
       setMessage("✅ Ad created successfully!");
       console.log("Created Ad:", res.data);

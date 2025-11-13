@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../Styles/AdminStyle/BlockUnblockButton.css';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const BlockUnblockButton = ({ user, onStatusChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -14,7 +15,7 @@ const BlockUnblockButton = ({ user, onStatusChange }) => {
     // Simulate API call
     try {
       // await new Promise(resolve => setTimeout(resolve, 1000));
-      const response = await axios.put(`http://localhost:5000/api/v1/users/${user._id}/status`, { status: newStatus });
+      const response = await axios.put(`${BasseUrl}/users/${user._id}/status`, { status: newStatus });
       if (response.status === 200) {
         toast.success('User status updated successfully');
       } else {

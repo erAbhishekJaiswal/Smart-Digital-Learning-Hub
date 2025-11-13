@@ -19,7 +19,7 @@ const CreateTest = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/test/", form);
+      const res = await axios.post("https://learning-backend-rust.vercel.app/api/test/", form);
       const data = res.data;
       console.log(data);
 

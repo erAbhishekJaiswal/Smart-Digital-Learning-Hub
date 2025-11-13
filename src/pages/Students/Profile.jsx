@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../CSSFiles/Students/Profile.css";
 import axios from "axios";
 import { isUserLoggedIn } from "../../utils/localstorage";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const Profile = () => {
   const [user, setUser] = useState({
     name: "Loading...",
@@ -30,7 +30,7 @@ const Profile = () => {
     try {
       // send api with token in header
       const response = await axios.get(
-        `http://localhost:5000/api/v1/users/profile`,
+        `${BasseUrl}/users/profile`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const data = response.data;

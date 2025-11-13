@@ -4,7 +4,7 @@ import axios from "axios";
 import "./AdminTechStackList.css";
 import "../../../CSSFiles/PublicPages/TechStackPage.css";
 import { getToken, getUserRole } from "../../../utils/localstorage";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const AdminTechStackList = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ const AdminTechStackList = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/techstack/");
+        const response = await axios.get(`${BasseUrl}/techstack/`);
         setCategories(response.data);
       } catch (err) {
         console.error(err);
@@ -34,7 +34,7 @@ const AdminTechStackList = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this tech stack?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/techstack/${id}`, {
+      await axios.delete(`${BasseUrl}/techstack/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCategories(categories.filter((item) => item._id !== id));

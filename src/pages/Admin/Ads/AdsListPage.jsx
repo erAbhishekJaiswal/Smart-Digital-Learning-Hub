@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdsListPage.css";
 import { useNavigate } from "react-router-dom";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const AdsListPage = () => {
     const navigate = useNavigate();
   const [ads, setAds] = useState([]);
@@ -19,7 +19,7 @@ const AdsListPage = () => {
   const fetchAds = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/v1/ads`, {
+      const res = await axios.get(`${BasseUrl}/ads`, {
         params: { search, category, status, page },
       });
       setAds(res.data.ads);
@@ -39,7 +39,7 @@ const AdsListPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this ad?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/v1/ads/${id}`);
+      await axios.delete(`${BasseUrl}/ads/${id}`);
       fetchAds();
     } catch (err) {
       console.error("Delete failed:", err);

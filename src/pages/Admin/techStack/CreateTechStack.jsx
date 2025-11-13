@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../../../CSSFiles/Admin/CreateTeckStack.css'; // Optional: for styling
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const CreateTechStack = () => {
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('');
@@ -30,7 +30,7 @@ const CreateTechStack = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/techstack/', {
+      const response = await axios.post(`${BasseUrl}/techstack/`, {
         name,
         icon,
         description,

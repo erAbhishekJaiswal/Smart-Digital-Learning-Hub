@@ -4,7 +4,7 @@ import "../../CSSFiles/PublicPages/ELibraryBooks.css";
 import axios from "axios";
 import ApplyPopup from "../../Components/PublicComp/ApplyPopup";
 import JobDetails from "../../Components/PublicComp/JobDetails";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const JobPortal = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
@@ -18,7 +18,7 @@ const JobPortal = () => {
   // ✅ Fetch Ads
   const fetchAds = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/ads/landingpage");
+      const response = await axios.get(`${BasseUrl}/ads/landingpage`);
       setAds(response.data);
     } catch (error) {
       console.error("Error fetching ads:", error);
@@ -28,7 +28,7 @@ const JobPortal = () => {
   // ✅ Fetch Jobs from Backend API
   const fetchJobs = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/jobs/");
+      const response = await axios.get(`${BasseUrl}/jobs/`);
       setJobs(response.data);
     } catch (error) {
       console.error("Error fetching jobs:", error);

@@ -643,7 +643,7 @@ import './ApplicationList.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const ApplicationList = () => {
   const [applications, setApplications] = useState([]);
   const [filteredApplications, setFilteredApplications] = useState([]);
@@ -922,7 +922,7 @@ const ApplicationList = () => {
         //     "__v": 0
         //   }
         // ];
-        const res = await axios.get('http://localhost:5000/api/v1/applications/');
+        const res = await axios.get(`${BasseUrl}/applications/`);
         setApplications(res.data);
         setFilteredApplications(res.data);
         setLoading(false);
@@ -1046,7 +1046,7 @@ const ApplicationList = () => {
     try {
       // Replace with your actual API call
       const updatedApplications = applications.filter(app => app._id !== id);
-      const response = await axios.delete(`http://localhost:5000/api/v1/applications/${id}`);
+      const response = await axios.delete(`${BasseUrl}/applications/${id}`);
       if (response.status !== 200) {
         throw new Error('Failed to delete application');
       }

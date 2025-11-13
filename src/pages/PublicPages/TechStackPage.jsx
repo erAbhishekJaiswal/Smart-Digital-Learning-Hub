@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../CSSFiles/PublicPages/TechStackPage.css';
+const BasseUrl = import.meta.env.VITE_BASE_URL
 
 const TechStackPage = () => {
   const [categories, setCategories] = useState([]);
@@ -13,7 +14,7 @@ const TechStackPage = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/techstack/');
+        const response = await axios.get(`${BasseUrl}/techstack/`);
         setCategories(response.data);
         console.log(response);
         

@@ -791,7 +791,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import "./PdfBookReader.css";
 import { useParams } from "react-router-dom";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 // ✅ PDF.js Worker Configuration
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -821,7 +821,7 @@ const PdfBookReader = () => {
         setError(null);
         const encodedPublicId = encodeURIComponent(publicId);
         const res = await fetch(
-          `http://localhost:5000/api/v1/ebooks/file/${encodedPublicId}`
+          `${BasseUrl}/ebooks/file/${encodedPublicId}`
         );
         const data = await res.json();
         console.log(data);

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import QuizResult from "./QuizResult";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 const TakeTest = ({ testId }) => {
   const [test, setTest] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/test/${testId}`)
+    axios.get(`${BasseUrl}/api/test/${testId}`)
       .then(res => {
         setTest(res.data);
         setAnswers(Array(res.data.questions.length).fill(null));

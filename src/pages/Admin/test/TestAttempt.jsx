@@ -34,7 +34,7 @@ const TestAttempt = () => {
   const fetchTest = async () => {
     setLoading(true);
     // Fetch test data from backend (mocked here)
-    const res = await axios.get(`http://localhost:5000/api/test/${bookId}`);
+    const res = await axios.get(`https://learning-backend-rust.vercel.app/api/test/${bookId}`);
     const data = res.data;
     console.log(data);
 
@@ -136,7 +136,7 @@ const TestAttempt = () => {
 
          try {
         // send with userId hardcoded for testing
-        const res = await axios.post(`http://localhost:5000/api/test/${test._id}/submit`, {
+        const res = await axios.post(`https://learning-backend-rust.vercel.app/api/test/${test._id}/submit`, {
           answers: answers, // Hardcoded userId for testing
         },{
           headers: {

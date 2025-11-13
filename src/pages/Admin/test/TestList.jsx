@@ -51,7 +51,7 @@ const TestList = () => {
     // ];
 
     try {
-      const response = await fetch("http://localhost:5000/api/test/");
+      const response = await fetch("https://learning-backend-rust.vercel.app/api/test/");
       const data = await response.json();
       console.log(data);
 
@@ -77,7 +77,7 @@ const TestList = () => {
       setTests((prev) => prev.filter((test) => test._id !== testId));
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/test/${testId}`, {
+      const response = await fetch(`https://learning-backend-rust.vercel.app/api/test/${testId}`, {
         method: "DELETE",
       });
       const data = await response.json();

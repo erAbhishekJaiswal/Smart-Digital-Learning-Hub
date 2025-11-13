@@ -486,6 +486,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../../CSSFiles/Admin/UploadBookForm.css";
+const BasseUrl = import.meta.env.VITE_BASE_URL
 
 const UploadBookForm = () => {
   const [formData, setFormData] = useState({
@@ -513,7 +514,7 @@ const UploadBookForm = () => {
     const fetchTechStacks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/techstack/"
+          `${BasseUrl}/techstack/`
         );
         const stacks = response.data || [];
         setTechStacks(stacks);
@@ -611,7 +612,7 @@ const UploadBookForm = () => {
       if (files.cover) submitData.append("cover", files.cover);
 
       const response = await axios.post(
-        "http://localhost:5000/api/v1/ebooks/uploadpdf",
+        `${BasseUrl}/ebooks/uploadpdf`,
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },

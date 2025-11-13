@@ -24,7 +24,7 @@ const TestResults = ({ test, answers, result }) => {
   setLoading(true);
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/test/${test._id}/attempt`,
+      `https://learning-backend-rust.vercel.app/api/test/${test._id}/attempt`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -80,7 +80,7 @@ const TestResults = ({ test, answers, result }) => {
 const fetchCertificateUrl = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/test/attempts/${attemptId}/certificate`,
+      `https://learning-backend-rust.vercel.app/api/test/attempts/${attemptId}/certificate`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
