@@ -86,12 +86,12 @@ const AdminTechStackList = () => {
                     <td>{category.popularityScore}%</td>
                     <td>{category.subcategories?.length || 0}</td>
                     <td>
-                      <Link
+                      {/* <Link
                         to={`/admin/editTechStack/${category._id}`}
                         className="btn-edit"
                       >
                         Edit
-                      </Link>
+                      </Link> */}
                       <button
                         className="btn-delete"
                         onClick={() => handleDelete(category._id)}

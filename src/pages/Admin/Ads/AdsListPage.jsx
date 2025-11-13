@@ -111,7 +111,7 @@ const AdsListPage = () => {
                 </div>
               </div>
               <div className="ads-list-actions">
-                <button className="btn-edit">Edit</button>
+                {/* <button className="btn-edit">Edit</button> */}
                 <button className="btn-delete" onClick={() => handleDelete(ad._id)}>
                   Delete
                 </button>

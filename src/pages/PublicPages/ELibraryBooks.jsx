@@ -174,9 +174,9 @@ const ELibraryBooks = () => {
                       )
                     }
                   >
-                    <span className="elibrary__category-icon">
+                    {/* <span className="elibrary__category-icon">
                       {stack.icon || "💻"}
-                    </span>
+                    </span> */}
                     <span className="elibrary__category-text">
                       {stack.name}
                     </span>

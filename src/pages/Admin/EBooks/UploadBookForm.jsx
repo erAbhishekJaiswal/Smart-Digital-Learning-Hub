@@ -487,8 +487,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../../CSSFiles/Admin/UploadBookForm.css";
 const BasseUrl = import.meta.env.VITE_BASE_URL
-
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const UploadBookForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -626,6 +628,7 @@ const UploadBookForm = () => {
       );
 
       if (response.data.success) {
+        toast.success("Book uploaded successfully!");
         setMessage({ type: "success", text: "Book uploaded successfully!" });
         setFormData({
           title: "",
@@ -640,6 +643,7 @@ const UploadBookForm = () => {
         setFiles({ pdf: null, cover: null });
         setPreview({ cover: null });
         setProgress(0);
+        navigate("/admin/bookslist");
       }
     } catch (error) {
       console.error("Upload error:", error);
@@ -922,7 +926,7 @@ const UploadBookForm = () => {
               disabled={loading}
               className="book-upload-submit-button"
             >
-              {loading ? "Uploading..." : "🚀 Upload Book"}
+              {loading ? "Uploading..." : "Upload Book"}
             </button>
           </div>
         </form>

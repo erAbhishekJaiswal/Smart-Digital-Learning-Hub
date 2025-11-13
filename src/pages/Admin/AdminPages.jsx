@@ -20,6 +20,7 @@ import AdminTechStackList from './techStack/AdminTechstacklist'
 import AddCompany from './Job/AddCompany'
 import ApplicationList from './Application/ApplicationList'
 import ResumeViewer from './Application/ResumeViewer'
+import UserDetails from './usermanage/UserDetails'
 
 const AdminPages = () => {
       const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -48,6 +49,7 @@ const AdminPages = () => {
         <Route path='/' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/dashboard' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/userlist' element ={<UserList dark={darkMode}  />} />
+        <Route path='/userprofile/:id' element ={<UserDetails dark={darkMode}  />} />
         <Route path='/createTeckStack' element={<CreateTechStack dark={darkMode} />} />
         <Route path='/techstack' element ={<AdminTechStackList dark={darkMode} />} />
         {/* <Route path='/addnewcourse' element={<AddEditCourse dark={darkMode} />} /> */}
