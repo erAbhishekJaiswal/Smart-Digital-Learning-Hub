@@ -33,7 +33,7 @@ const Header = ({ onMenuClick, darkMode, onThemeToggle }) => {
           onClick={onThemeToggle}
         >
           {darkMode ? '☀️' : '🌙'}
-        </button> */}
+        </button>
         
         <div className="admin-header__search">
           <input 
@@ -41,14 +41,14 @@ const Header = ({ onMenuClick, darkMode, onThemeToggle }) => {
             placeholder="Search..."
             className="admin-header__search-input"
           />
-        </div>
+        </div> */}
         
-        <div className="admin-header__user">
+        {/* <div className="admin-header__user">
           <Link to="/admin/profile">
           <div className="admin-header__avatar"><SlUser /></div>
           </Link>
-          {/* <span className="admin-header__username">Admin</span> */}
-        </div>
+          <span className="admin-header__username">Admin</span>
+        </div> */}
       </div>
     </header>
   );

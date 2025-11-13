@@ -1464,7 +1464,7 @@ const ApplicationDetailsModal = ({ application, onClose, onStatusUpdate, getStat
  const handleViewResumePdf = async() => {
     const resumeUrl = application.publicId;
     const publicid = encodeURIComponent(resumeUrl);
-    const res = await axios.get(`http://localhost:5000/api/v1/applications/pdf/${publicid}`);
+    const res = await axios.get(`${BasseUrl}/applications/pdf/${publicid}`);
     // console.log(res);
     navigate(`/admin/resume/${publicid}`, { state: { resume: res.data.signedUrl } });
   }

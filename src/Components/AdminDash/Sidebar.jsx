@@ -12,6 +12,8 @@ import { MdOutlineQuiz } from "react-icons/md";
 import { FaBook } from "react-icons/fa6";
 import { FaAd } from "react-icons/fa";
 import { SiCoursera } from "react-icons/si";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoMdListBox } from "react-icons/io";
 const Sidebar = ({ isOpen, onClose, darkMode }) => {
   const menuItems = [
     { icon: <MdDashboard />, label: 'Dashboard', path: '/admin/dashboard' }, //active: true,
@@ -21,8 +23,10 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon: <FaAd />, label: 'Ads List', path: '/admin/adslist' },
     { icon:  <FaBook />, label: 'Book List', path: '/admin/bookslist' },
     { icon: <MdOutlineQuiz />, label: 'Test List', path: '/admin/testlist' },
-    { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
-    { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }
+    { icon: <IoIosAddCircleOutline />, label: 'Create Company', path: '/admin/addcompany' },
+    { icon: <IoMdListBox />, label: 'Job Applications', path: '/admin/applicationlist' },
+    // { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
+    // { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }
   ];
 
   return (
@@ -55,7 +59,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
           <div className="admin-sidebar__user">
             <div className="admin-sidebar__user-avatar">👨‍💼</div>
             <div className="admin-sidebar__user-info">
-              <div className="admin-sidebar__user-name">John Doe</div>
+              {/* <div className="admin-sidebar__user-name">John Doe</div> */}
               <div className="admin-sidebar__user-role">Administrator</div>
             </div>
           </div>

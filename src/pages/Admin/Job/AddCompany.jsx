@@ -82,7 +82,7 @@ const AddCompany = () => {
             <input
               type="text"
               name="name"
-              placeholder="e.g. ZeroSEK Solutions"
+              placeholder="e.g. KumarInfoTech"
               value={formData.name}
               onChange={handleChange}
               className="addcompany-input"
