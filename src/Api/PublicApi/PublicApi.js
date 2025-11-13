@@ -3,7 +3,7 @@ const BasseUrl = import.meta.env.VITE_BASE_URL
 
 
 // 
-export const  = async () => {
+export const getLandingPage = async () => {
     const response = await axios.get(`${BasseUrl}/ads/landingpage`);
     return response.data
 }

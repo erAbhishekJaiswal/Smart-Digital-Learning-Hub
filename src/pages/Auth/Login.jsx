@@ -13,7 +13,7 @@ import {
 // import { loginUser } from "../../Api/AuthApi";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-
+const BasseUrl = import.meta.env.VITE_BASE_URL
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -41,7 +41,7 @@ const Login = () => {
     e.preventDefault();
     try {
         setLoading(true);
-    const resdata = await axios.post(`http://localhost:5000/api/v1/auth/login`, formData) // loginUser(formData);
+    const resdata = await axios.post(`${BasseUrl}/auth/login`, formData) // loginUser(formData);
     // alert("Login successful!");
     // console.log(res);
     const res = resdata.data;
