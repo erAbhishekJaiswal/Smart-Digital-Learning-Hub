@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon: <MdDashboard />, label: 'Dashboard', path: '/admin/dashboard' }, //active: true,
     { icon: <MdPeople />, label: 'Users', path: '/admin/userlist' },
     { icon: <MdLibraryBooks />, label: 'TechStack', path: '/admin/techstack' },
-    { icon: <SiCoursera />, label: 'Courses', path: '/admin/courselist' },
+    // { icon: <SiCoursera />, label: 'Courses', path: '/admin/courselist' },
     { icon: <FaAd />, label: 'Ads List', path: '/admin/adslist' },
     { icon:  <FaBook />, label: 'Book List', path: '/admin/bookslist' },
     { icon: <MdOutlineQuiz />, label: 'Test List', path: '/admin/testlist' },
