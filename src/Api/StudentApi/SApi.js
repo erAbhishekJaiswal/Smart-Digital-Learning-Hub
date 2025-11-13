@@ -12,14 +12,14 @@ export const getProfile = async (id) => {
 
 //Working
 export const GetMyTests = async () => {
-    const response = await axios.get(`${BasseUrl}/test/attempt/tests`,{ 
+    const response = await axios.get(`https://learning-backend-rust.vercel.app/api/test/attempt/tests`,{ 
         headers: { Authorization: `Bearer ${isUserLoggedIn()}` } 
     });
     return response.data
 };
 
 export const GetTestById = async (id) => {
-    const response = await axios.get(`${BasseUrl}/test/attempt/${id}`,{
+    const response = await axios.get(`https://learning-backend-rust.vercel.app/api/test/attempt/${id}`,{
         headers: { Authorization: `Bearer ${isUserLoggedIn()}` }
     });
     return response.data

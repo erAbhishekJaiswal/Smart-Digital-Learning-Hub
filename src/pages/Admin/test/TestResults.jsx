@@ -92,6 +92,10 @@ const fetchCertificateUrl = async () => {
   }
 };
 
+const handleRetry = () => {
+  window.location.reload(); // or a custom error handler
+};
+
 // ✅ Fetch on first load if passed
 useEffect(() => {
   if (results?.passed && attemptId) {
@@ -253,9 +257,9 @@ useEffect(() => {
 
       {/* Actions */}
       <div className="results-actions">
-        <button className="results-action results-action--retry">🔄 Retry Test</button>
-        <button className="results-action results-action--home">🏠 Back to Tests</button>
-        <button className="results-action results-action--share">📤 Share Results</button>
+        <button className="results-action results-action--retry" onClick={handleRetry}>🔄 Retry Test</button>
+        {/* <button className="results-action results-action--home" onClick={handleBackToTests}>🏠 Back to Tests</button> */}
+        {/* <button className="results-action results-action--share" >📤 Share Results</button> */}
       </div>
     </div>
   );

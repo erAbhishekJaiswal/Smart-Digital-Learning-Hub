@@ -16,12 +16,12 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
   const menuItems = [
     { icon: <MdDashboard />, label: 'Dashboard', active: false,  path: '/student/'},
     { icon: <MdPersonOutline />, label: 'My Profile', path: '/student/profile' },
-    { icon: <IoMdBook />, label: 'Books', path: '/student/books' },
+    // { icon: <IoMdBook />, label: 'Books', path: '/student/books' },
     { icon: < FaArrowTrendUp/>, label: 'Trending', path: '/' },
-    { icon: <LiaCertificateSolid />, label: 'Cirtificates', path: '/student/certificates' },
+    // { icon: <LiaCertificateSolid />, label: 'Cirtificates', path: '/student/certificates' },
     { icon: <FaCode />, label: 'Code Editor', path: '/student/codeediter' },
     { icon: <MdLibraryBooks />, label: 'My Tests', path: '/student/mytests' },
-    { icon: <RiChatAiLine />, label: 'Ask to AI', path: '/student/asktoai' },
+    // { icon: <RiChatAiLine />, label: 'Ask to AI', path: '/student/asktoai' },
     { icon: <MdSupportAgent />, label: 'Support', path: '/student/support' }
   ];
 
