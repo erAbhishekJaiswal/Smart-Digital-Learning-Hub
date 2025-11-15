@@ -1,74 +1,32 @@
-/* PdfBookReader.css */
-/* Add to your PdfBookReader.css */
-
-/* Two-page view container */
-.pdf-page-container {
-  display: flex;
-  gap: 10px;
-  padding: 20px;
-  background: white;
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #000000;
+  --text-secondary: rgba(0, 0, 0, 0.8);
+  --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.2);
+  --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.3);
+  --border-radius: 20px;
+  --border-radius-small: 12px;
 }
 
-/* Single page view */
-.pdf-flip-page {
-  background: white !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Ensure proper scaling */
-.pdf-book-reader__flip-book {
-  transform-origin: center center;
-  transition: transform 0.3s ease;
+body{
+  color: #000000;
 }
 
-/* Active state for buttons */
-.pdf-book-reader__view-btn--active {
-  background: linear-gradient(135deg, #3498db, #2980b9) !important;
-  border-color: #3498db !important;
-  color: white !important;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3) !important;
-}
-
-/* Scale display styling */
-.pdf-book-reader__scale-display {
-  background: rgba(236, 240, 241, 0.9);
-  padding: 10px 18px;
-  border-radius: 25px;
-  font-weight: 700;
-  color: #2c3e50;
-  min-width: 80px;
-  text-align: center;
-  font-size: 0.9rem;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-}
-
-/* Book info styling */
-.pdf-book-reader__book-info {
-  flex: 1;
-}
-
-/* Control buttons container */
-.pdf-book-reader__controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.react-pdf__Document{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0 !important;
-}
-
+/* Base Styles */
 .pdf-book-reader {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   padding: 20px;
   transition: all 0.3s ease;
@@ -81,25 +39,31 @@
   background: #0a1929;
 }
 
+.pdf-book-reader--mobile {
+  padding: 10px;
+}
+
+.pdf-book-reader--tablet {
+  padding: 15px;
+}
+
+/* Loading & Error States */
 .pdf-book-reader__loading,
 .pdf-book-reader__error {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
-  color: white;
+  min-height: 60vh;
+  color: var(--text-primary);
   text-align: center;
   gap: 20px;
+  padding: 40px 20px;
 }
 
-.pdf-book-reader__spinner-icon {
-  color: white;
-}
-
-.pdf-book-reader__loading-subtext {
-  font-size: 0.9rem;
-  opacity: 0.8;
+.spinner-icon {
+  color: var(--text-primary);
+  animation: spin 2s linear infinite;
 }
 
 .pdf-book-reader__error h3 {
@@ -108,9 +72,9 @@
   font-size: 1.5rem;
 }
 
-.pdf-book-reader__retry-btn {
-  background: linear-gradient(135deg, #4ecdc4, #44a08d);
-  color: white;
+.retry-button {
+  background: var(--success-gradient);
+  color: rgb(0, 0, 0);
   border: none;
   padding: 12px 24px;
   border-radius: 25px;
@@ -121,130 +85,130 @@
   font-size: 1rem;
 }
 
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Header */
 .pdf-book-reader__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
-  /* background: rgba(255, 255, 255, 0.95); */
-  padding: 0px 20px;
-  border-radius: 20px;
+  color: var(--text-primary);
+  background: var(--glass-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
   margin-bottom: 25px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.pdf-book-reader__book-title {
+.pdf-book-reader__book-info {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pdf-book-reader__book-info h2 {
   margin: 0;
-  color: #2c3e50;
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
   font-weight: 700;
-  background: linear-gradient(135deg, #2c3e50, #3498db);
+  background: linear-gradient(135deg, #fff, #e0e7ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.2;
 }
 
-.pdf-fullscreen-button{
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-}
-
-.pdf-book-reader__book-author {
+.pdf-book-reader__book-info p {
   margin: 8px 0 0 0;
-  color: #7f8c8d;
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   font-weight: 500;
 }
 
 .pdf-book-reader__controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.pdf-book-reader__control-btn {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  color: white;
-  border: none;
-  width: 45px;
-  height: 45px;
+.control-btn {
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  backdrop-filter: blur(10px);
 }
 
-.pdf-book-reader__control-btn:hover:not(:disabled) {
-  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+.control-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-light);
 }
 
-.pdf-book-reader__control-btn:disabled {
-  background: #bdc3c7;
+.control-btn:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
-/* Force white background on each rendered PDF page */
-.pdf-page canvas {
-  background-color: white !important;
-  display: block;
-  margin: 0 auto;
-  border-radius: 4px;
+.fullscreen-btn {
+  background: var(--secondary-gradient);
 }
 
-.pdf-book-reader__scale-display {
-  background: rgba(236, 240, 241, 0.9);
-  padding: 10px 18px;
+.scale-display {
+  background: var(--glass-bg);
+  padding: 10px 16px;
   border-radius: 25px;
   font-weight: 700;
-  color: #2c3e50;
-  min-width: 80px;
+  color: var(--text-primary);
+  min-width: 70px;
   text-align: center;
   font-size: 0.9rem;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
 }
 
+/* Main Viewer */
 .pdf-book-reader__viewer-container {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
   padding: 25px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
 }
 
+/* Navigation */
 .pdf-book-reader__navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-  padding: 0 15px;
+  padding: 0 10px;
   gap: 15px;
   width: 100%;
   max-width: 600px;
+  flex-wrap: wrap;
 }
 
-.pdf-book-reader__nav-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+.nav-btn {
+  background: var(--secondary-gradient);
   color: white;
   border: none;
   padding: 14px 28px;
@@ -255,200 +219,205 @@
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-  font-size: 1rem;
+  box-shadow: var(--shadow-light);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  flex: 1;
+  justify-content: center;
+  min-width: 35px;
 }
 
-.pdf-book-reader__nav-btn:hover:not(:disabled) {
+.nav-btn:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: var(--shadow-medium);
 }
 
-.pdf-book-reader__nav-btn:disabled {
+.nav-btn:disabled {
   background: #bdc3c7;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-.pdf-book-reader__page-info {
+.page-info {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(236, 240, 241, 0.9);
-  padding: 12px 24px;
+  background: var(--glass-bg);
+  padding: 12px 20px;
   border-radius: 30px;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  min-width: 180px;
+  justify-content: center;
 }
 
-.pdf-book-reader__page-info:focus-within {
-  border-color: #3498db;
-}
-
-.pdf-book-reader__page-input {
-  width: 70px;
-  padding: 10px 14px;
-  border: 2px solid #bdc3c7;
-  border-radius: 12px;
+.page-input {
+  width: 60px;
+  padding: 10px 12px;
+  border: 2px solid var(--glass-border);
+  border-radius: var(--border-radius-small);
   text-align: center;
   font-weight: 700;
   transition: all 0.3s ease;
   font-size: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
 }
 
-.pdf-book-reader__page-input:focus {
+.page-input:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.pdf-book-reader__page-count {
-  color: #7f8c8d;
+.page-count {
+  color: var(--text-secondary);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
-/* Flip Book Styles */
+/* FlipBook Container */
 .pdf-book-reader__flip-book-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 800px;
+  min-height: min(80vh, 800px);
   position: relative;
+  /* margin: 20px 0; */
 }
 
-.pdf-book-reader__flip-book {
+.custom-flipbook {
   margin: 0 auto;
+  box-shadow: var(--shadow-heavy);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* Page Styles */
-
-.pdf-book-reader__flip-page {
-  background: #fff !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.page {
-  background-color: #fff !important;
-  border: 1px solid #ddd !important;
-}
-
-
-.pdf-book-reader__flip-page {
-  background: white;
+/* PDF Pages */
+.pdf-flip-page {
+  background: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.pdf-book-reader__flip-page--cover {
-  background: linear-gradient(135deg, #8B4513, #A0522D);
-  color: white;
-}
-
-.pdf-book-reader__flip-page--back {
-  background: linear-gradient(135deg, #A0522D, #8B4513);
-}
-
-.pdf-book-reader__flip-page-content {
+.pdf-page-content {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  padding: 20px;
-  box-sizing: border-box;
 }
 
-.pdf-book-reader__flip-page-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 4px;
-}
-
-.pdf-book-reader__flip-page-number {
+.pdf-page-footer {
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   right: 15px;
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 5px 12px;
+  padding: 6px 12px;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 600;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
 }
 
-/* Cover Styles */
-.pdf-book-reader__cover-content {
-  text-align: center;
-  padding: 40px;
-  width: 100%;
-  height: 100%;
+/* Loading Placeholders */
+.pdf-loading-placeholder,
+.pdf-page-loading {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-align: center;
+  gap: 15px;
 }
 
-.pdf-book-reader__cover-front h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.pdf-loading-placeholder {
+  height: 400px;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius);
+  padding: 40px;
 }
 
-.pdf-book-reader__cover-front p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 40px;
+.pdf-page-loading {
+  height: 100%;
+  width: 100%;
 }
 
-.pdf-book-reader__cover-back h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.spinner {
+  animation: spin 1.5s linear infinite;
 }
 
-.pdf-book-reader__cover-back p {
-  font-size: 1.1rem;
-  opacity: 0.9;
+/* Quick Navigation */
+.quick-navigation {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.pdf-book-reader__cover-decoration {
-  width: 100px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 20px 0;
-  border-radius: 2px;
+.page-dots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+  background: var(--glass-bg);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  max-width: 100%;
 }
 
-/* React PageFlip Customization */
-.page-flip-book {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
-  border-radius: 8px !important;
+.page-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
 }
 
-.page {
-  background-color: white !important;
-  border: 1px solid #ddd !important;
+.page-dot:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
-.page.--left {
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 8px 0 0 8px !important;
+.page-dot.active {
+  background: var(--secondary-gradient);
+  transform: scale(1.15);
+  box-shadow: var(--shadow-light);
 }
 
-.page.--right {
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 0 8px 8px 0 !important;
+.more-pages {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
 }
+
+
+
+.react-pdf__Page__canvas{
+  height: 100% !important;
+  width: 100% !important;
+}
+
 
 /* Footer */
 .pdf-book-reader__footer {
@@ -457,235 +426,237 @@
   margin-bottom: 20px;
 }
 
-.pdf-book-reader__view-controls {
-  background: rgba(255, 255, 255, 0.95);
+.view-controls {
+  background: var(--glass-bg);
   padding: 12px;
   border-radius: 30px;
   display: flex;
   gap: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-light);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-border);
 }
 
-.pdf-book-reader__view-btn {
+.view-btn {
   background: transparent;
-  border: 2px solid #bdc3c7;
-  padding: 12px 24px;
+  border: 2px solid var(--glass-border);
+  padding: 12px 20px;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
-  color: #7f8c8d;
+  color: var(--text-secondary);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
-.pdf-book-reader__view-btn--active {
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  border-color: #3498db;
+.view-btn.active {
+  background: var(--secondary-gradient);
+  border-color: transparent;
   color: white;
-  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  box-shadow: var(--shadow-light);
 }
 
-.pdf-book-reader__view-btn:hover:not(:disabled) {
+.view-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-light);
 }
 
-/* Page Dots Navigation */
-.pdf-book-reader__page-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-  margin: 0 auto 20px;
-  max-width: fit-content;
+.view-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.pdf-book-reader__page-dot {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.3);
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.pdf-book-reader__page-dot--active {
-  background: white;
-  color: #3498db;
-  transform: scale(1.1);
-}
-
-.pdf-book-reader__page-dot:hover:not(:disabled) {
-  background: white;
-  color: #3498db;
-  transform: scale(1.2);
-}
-
-/* Instructions */
-.pdf-book-reader__instructions {
+/* Mobile Instructions */
+.mobile-instructions {
   text-align: center;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin-top: 15px;
-  font-style: italic;
+  padding: 10px;
+  background: var(--glass-bg);
+  border-radius: var(--border-radius-small);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .pdf-book-reader {
-    padding: 10px;
-  }
-  
+/* React-PDF Document Fixes */
+.react-pdf__Document {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+/* Animation Keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
   .pdf-book-reader__header {
     flex-direction: column;
-    gap: 20px;
     text-align: center;
-    padding: 20px;
-  }
-  
-  .pdf-book-reader__book-title {
-    font-size: 1.3rem;
-  }
-  
-  .pdf-book-reader__navigation {
-    flex-direction: column;
     gap: 20px;
-  }
-  
-  .pdf-book-reader__nav-btn {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    width: 100%;
-    justify-content: center;
   }
   
   .pdf-book-reader__controls {
     justify-content: center;
-    flex-wrap: wrap;
   }
   
-  .pdf-book-reader__view-controls {
-    flex-direction: column;
-    width: 100%;
-    max-width: 250px;
+  .pdf-book-reader__navigation {
+    flex-direction: row;
+    gap: 5px;
   }
   
-  .pdf-book-reader__page-dots {
-    flex-wrap: wrap;
-    max-width: 90%;
-  }
-  
-  .pdf-book-reader__flip-book-container {
-    min-height: 600px;
-  }
-  
-  .pdf-book-reader__cover-front h1 {
-    font-size: 2rem;
+  .nav-btn {
+    width: 22%;
+    max-width: 200px;
   }
 }
 
-@media (max-width: 480px) {
-  .pdf-book-reader__header {
+@media (max-width: 768px) {
+  .pdf-book-reader {
+    padding: 10px;
+  }
+
+  .stf__parent{
+  min-width: 260px !important;
+  min-height: 520px !important;
+}
+
+
+.stf__wrapper{
+padding-bottom: 0 !important;
+}
+
+.stf__item{
+height: 100% !important;
+width: 100% !important;
+}
+  
+  .pdf-book-reader__viewer-container {
     padding: 15px;
   }
   
-  .pdf-book-reader__viewer-container {
-    padding: 15px 10px;
+  .pdf-book-reader__header {
+    padding: 15px;
+    margin-bottom: 15px;
   }
   
-  .pdf-book-reader__page-info {
-    padding: 10px 20px;
+  .page-info {
+    min-width: 150px;
+    padding: 10px 15px;
   }
   
-  .pdf-book-reader__page-input {
-    width: 60px;
-    padding: 8px 12px;
+  .page-input {
+    width: 50px;
+    padding: 8px 10px;
   }
   
-  .pdf-book-reader__control-btn {
+  .control-btn {
     width: 40px;
     height: 40px;
   }
   
-  .pdf-book-reader__instructions {
+  .scale-display {
+    padding: 8px 12px;
+    min-width: 60px;
     font-size: 0.8rem;
-    padding: 0 10px;
+  }
+  
+  .view-controls {
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .quick-navigation {
+    display: none;
   }
 }
 
-/* Focus styles for accessibility */
-.pdf-book-reader__control-btn:focus,
-.pdf-book-reader__nav-btn:focus,
-.pdf-book-reader__view-btn:focus,
-.pdf-book-reader__page-input:focus {
-  outline: 2px solid #3498db;
+@media (max-width: 480px) {
+  .pdf-book-reader__viewer-container {
+    padding: 10px;
+  }
+  
+  .pdf-book-reader__header {
+    padding: 12px;
+  }
+  
+  .nav-btn {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .page-info {
+    min-width: 140px;
+    padding: 8px 12px;
+  }
+  
+  .page-input {
+    width: 45px;
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-instructions {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .pdf-book-reader {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .pdf-book-reader__header,
+  .pdf-book-reader__navigation,
+  .pdf-book-reader__footer,
+  .mobile-instructions {
+    display: none;
+  }
+  
+  .pdf-book-reader {
+    background: white;
+    padding: 0;
+  }
+  
+  .pdf-book-reader__viewer-container {
+    background: white;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.control-btn:focus,
+.nav-btn:focus,
+.view-btn:focus,
+.page-input:focus,
+.page-dot:focus {
+  outline: 2px solid #667eea;
   outline-offset: 2px;
 }
-
-
-
-
-
-
-/* Ensure every page has a visible white canvas */
-.pdf-flip-page,
-.pdf-page {
-  position: relative;
-  background: white !important;
-  z-index: 2;
-  overflow: hidden;
-}
-
-/* Ensure the FlipBook pages show their content */
-.pdf-flip-page canvas {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  background: white !important;
-}
-
-/* Remove transparency in the FlipBook container */
-.pdf-book-reader__flip-book-container,
-.pdf-book-reader__viewer-container {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Fix 3D stacking issue */
-.page {
-  transform-style: flat !important;
-  background: #fff !important;
-  z-index: 2 !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

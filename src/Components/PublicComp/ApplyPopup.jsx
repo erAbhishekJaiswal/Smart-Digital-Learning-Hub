@@ -673,7 +673,7 @@ const ApplyPopup = ({ job, isOpen, onClose }) => {
       });
 
       const response = await axios.post(
-        `${BasseUrl}/applications/create`,
+        `${BasseUrl}/applications/`,
         submitData,
         {
           headers: { "Content-Type": "multipart/form-data" },

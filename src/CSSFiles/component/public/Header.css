@@ -1,3 +1,70 @@
+/* ------------------------
+    MOBILE MENU
+------------------------ */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 30px;
+  display: none;
+  color: #002147;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.header-bar-btn {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .header-bar-btn {
+    position: absolute;
+    top: 72px;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 18px 0;
+    display: none;
+    animation: fadeSlide 0.3s ease forwards;
+  }
+
+  .header-bar-btn.active {
+    display: flex;
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .header-bar-links ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header-btn-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+
+
+
 /* 🔹 Global */
 .header-bar {
   font-family: "Segoe UI", sans-serif;
@@ -181,7 +248,7 @@
 
   .header-bar-btn {
     position: absolute;
-    top: 70px;
+    top: 50px !important;
     left: 0;
     width: 100%;
     flex-direction: column;

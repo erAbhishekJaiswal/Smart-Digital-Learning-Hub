@@ -120,6 +120,10 @@ const ELibraryBooks = () => {
     navigate(`/codeeditor`);
   };
 
+  const handleAsktoAI = () => {
+    navigate(`/asktoai`);
+  };
+
   return (
     <div className="elibrary__container">
       {/* Left Sidebar */}
@@ -295,6 +299,7 @@ const ELibraryBooks = () => {
                   handleCodeYourself={handleCodeYourself}
                   onRead={handleReadBook}
                   onTestSkill={onTestSkill}
+                  handleAsktoAI={handleAsktoAI}
                 />
               ))}
             </div>
@@ -334,7 +339,7 @@ const ELibraryBooks = () => {
 };
 
 // Book Card Component
-const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself }) => {
+const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself, handleAsktoAI }) => {
   return (
     <div className="elibrary__book-card">
       <div className="elibrary__book-image-container">
@@ -384,7 +389,7 @@ const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself }) => {
           </button>
           <button
             className="elibrary__action-btn elibrary__ai-btn"
-            // onClick={() => onAskAI(book._id)}
+            onClick={handleAsktoAI}
           >
             <span className="elibrary__btn-icon">🤖</span>
             Ask AI

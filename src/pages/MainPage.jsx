@@ -43,6 +43,7 @@ import TestList from './Admin/test/TestList';
 import TestAttempt from './Admin/test/TestAttempt';
 import CodeEditorPage from './Students/Editor/CodeEditorPage';
 import JobPortal from './PublicPages/JobPortal';
+import AskToAI from './PublicPages/AskToAI';
 const MainPage = () => {
   return (
     <>
@@ -85,6 +86,7 @@ const MainPage = () => {
                   <Route path="/pdfbooks/:publicId" element={<PdfBookReader />} />
                   <Route path="/testattempt/:bookId" element={<TestAttempt />} />
                   <Route path="/jobportal" element={<JobPortal />} />
+                  <Route path="/asktoai" element={<AskToAI />} />
 
                   {/*********************Admin Courses Routes *********************/}
 

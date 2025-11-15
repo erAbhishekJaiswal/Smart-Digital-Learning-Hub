@@ -20,11 +20,7 @@ const TestAttempt = () => {
 
 
 
-  // chack the user is logged in or not
-  if (!isUserLoggedIn()) {
-    toast.error('You are not logged in');
-    navigate('/signin');
-  }
+
 
     useEffect(() => {
     fetchTest();
@@ -32,6 +28,11 @@ const TestAttempt = () => {
 
   // Function to fetch test data
   const fetchTest = async () => {
+      // chack the user is logged in or not
+  if (!isUserLoggedIn()) {
+    toast.error('You are not logged in');
+    navigate('/signin');
+  }
     setLoading(true);
     // Fetch test data from backend (mocked here)
     const res = await axios.get(`https://learning-backend-rust.vercel.app/api/test/${bookId}`);

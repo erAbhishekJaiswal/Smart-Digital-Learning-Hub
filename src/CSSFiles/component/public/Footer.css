@@ -327,10 +327,15 @@ a:hover {
     .cta-content {
         flex-direction: column;
         text-align: center;
+        padding: 10px;
     }
     
     .cta-text {
         margin-bottom: 15px;
+    }
+
+    .footer-cta-bar{
+        padding: 35px 15px;
     }
 
     .footer-col {

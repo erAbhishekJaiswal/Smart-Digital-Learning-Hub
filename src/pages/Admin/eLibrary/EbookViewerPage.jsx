@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import { FaChevronLeft, FaChevronRight, FaExpand, FaBookOpen, FaFile } from "react-icons/fa";
 import { RiRobot2Fill } from "react-icons/ri";
 import { PiPaperPlaneRightBold } from "react-icons/pi";
-import "../../../CSSFiles/EbookViewerPage.css";
+// import "../../../CSSFiles/EbookViewerPage.css";
 import pdffile from "../../../assets/User_Manual.pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
