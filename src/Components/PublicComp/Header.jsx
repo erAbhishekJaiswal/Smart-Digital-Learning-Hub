@@ -84,7 +84,7 @@ const Header = () => {
       {/* 🔸 MAIN HEADER */}
       <div className="header-bar-main">
         <div className="header-bar-logo">
-          <a href="/">
+          <a href="https://www.kumarinfotech.net/">
             <img
               src="https://www.kumarinfotech.com/img/logo/kitlogonew.webp"
               alt="Kumarinfotech Logo"
@@ -108,14 +108,15 @@ const Header = () => {
         <div className={`header-bar-btn ${menuOpen ? "active" : ""}`}>
           <nav className="header-bar-links">
             <ul>
-              <li><button onClick={() => handleNavClick("/")}>Home</button></li>
+              <li><a href="https://www.kumarinfotech.net/">Home</a></li>
               <li><button onClick={() => handleNavClick("/")}>E-Learning</button></li>
               <li><button onClick={() => handleNavClick("/jobportal")}>Jobs</button></li>
-              <li><button onClick={() => handleNavClick("#about")}>About Us</button></li>
-              <li><button onClick={() => handleNavClick("#services")}>Services</button></li>
-              <li><button onClick={() => handleNavClick("#portfolio")}>Portfolio</button></li>
-              <li><button onClick={() => handleNavClick("#blog")}>Blog</button></li>
-              <li><button onClick={() => handleNavClick("#contact")}>Contact</button></li>
+              {/* make the redirect to on the links */}
+              <li><a href="https://www.kumarinfotech.net/aboutus">About Us</a></li>
+              {/* <li><button onClick={() => handleNavClick("#services")}>Services</button></li> */}
+              <li><a href="https://www.kumarinfotech.net/it-internship-training">Internship</a></li>
+              <li><a href="https://www.kumarinfotech.net/career">Career</a></li>
+              <li><a href="https://www.kumarinfotech.net/contactus">Contact Us</a></li>
             </ul>
           </nav>
 
