@@ -153,7 +153,7 @@ const Header = () => {
       </div>
 
       {/* 🔻 MARQUEE */}
-      <div className="header-bar-marquee">
+      <div className="header-bar-marquee" style={{display:menuOpen ? "none" : "block"}}>
         <marquee
           className="marquee-text"
           scrollamount="6"

@@ -559,8 +559,8 @@ const PdfBookReader = () => {
           <p>{bookInfo?.author || "Unknown Author"}</p>
         </div>
 
-        {/* <div className="pdf-book-reader__controls">
-          {!isMobile && (
+        <div className="pdf-book-reader__controls">
+        {/*   {!isMobile && (
             <>
               <button 
                 onClick={zoomOut} 
@@ -593,6 +593,7 @@ const PdfBookReader = () => {
               </button>
             </>
           )}
+            */}
           
           <button 
             onClick={toggleFullScreen} 
@@ -601,7 +602,7 @@ const PdfBookReader = () => {
           >
             {isFullScreen ? <Minimize size={20} /> : <Maximize size={20} />}
           </button>
-        </div> */}
+        </div> 
       </motion.header>
 
       {/* MAIN VIEWER */}
