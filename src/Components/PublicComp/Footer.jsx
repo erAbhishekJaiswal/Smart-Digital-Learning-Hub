@@ -91,7 +91,7 @@ const Footer = () => {
             </div>
 
             <h4 className="drop-review-title">Drop Us A Review</h4>
-            <a href="google.com/maps/place//data=!4m3!3m2!1s0x28dbbcd8eb2ec2c5:0x956ab08dcabdd5a4!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" className="google-review-link">
+            <a href="https://www.google.com/maps/place//data=!4m3!3m2!1s0x28dbbcd8eb2ec2c5:0x956ab08dcabdd5a4!12e1?source=g.page.m.ia._&laa=nmx-review-solicitation-ia2" className="google-review-link">
               <div className="google-review-btn">
                 <span className="google-icon">G</span>
                 <div className="google-text">

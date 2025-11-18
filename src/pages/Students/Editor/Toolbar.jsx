@@ -49,10 +49,10 @@ const Toolbar = ({ activeTab, setActiveTab, runCode, resetCode, isRunning }) => 
           Reset
         </button>
 
-        <button className="student-save-btn">
+        {/* <button className="student-save-btn">
           <span className="student-save-icon">💾</span>
           Save
-        </button>
+        </button> */}
       </div>
     </div>
   );

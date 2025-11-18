@@ -4,6 +4,10 @@ import Editor from '@monaco-editor/react';
 import './CodeEditor.css';
 
 const CodeEditor = ({ language, displayName, value, onChange, isActive }) => {
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    alert('Code copied to clipboard!');
+  }
   return (
     <div className={`student-code-editor-wrapper ${isActive ? 'student-editor-active' : 'student-editor-hidden'}`}>
       <div className="student-editor-header">
@@ -12,7 +16,7 @@ const CodeEditor = ({ language, displayName, value, onChange, isActive }) => {
           <span className="student-file-type">{displayName} File</span>
         </div>
         <div className="student-editor-actions">
-          <button className="student-editor-btn student-copy-btn">
+          <button className="student-editor-btn student-copy-btn" onClick={handleCopy}>
             Copy
           </button>
         </div>
