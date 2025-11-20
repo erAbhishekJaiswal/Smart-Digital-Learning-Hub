@@ -28,8 +28,8 @@ const CreateTestModal = ({ onClose }) => {
     setFetching(true);
     try {
       const [booksRes, techRes] = await Promise.all([
-        axios.get("https://learning-backend-rust.vercel.app/api/v1/ebooks/"),
-        axios.get("https://learning-backend-rust.vercel.app/api/v1/techstack/")
+        axios.get(`${import.meta.env.VITE_BASE_URL}/ebooks/`),
+        axios.get(`${import.meta.env.VITE_BASE_URL}/techstack/`)
       ]);
       setBooks(booksRes.data || []);
       setTechStacks(techRes.data || []);
@@ -71,7 +71,7 @@ const CreateTestModal = ({ onClose }) => {
     setLoading(true);
     console.log(formData);
     try {
-      const res = await axios.post("https://learning-backend-rust.vercel.app/api/test/", formData);
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/test/`, formData);
       console.log("Created Test:", res.data);
 
       alert("✅ Test created successfully! You can now add questions.");

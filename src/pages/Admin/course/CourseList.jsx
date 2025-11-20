@@ -34,7 +34,7 @@ const CourseList = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/v1/courses');
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/courses`);
       setCourses(response.data);
       console.log(response.data);
       
@@ -47,7 +47,7 @@ const CourseList = () => {
 
   const fetchTechStacks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/v1/techstack/');
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/techstack/`);
       setTechStacks(response.data);
     } catch (error) {
       console.error('Error fetching tech stacks:', error);

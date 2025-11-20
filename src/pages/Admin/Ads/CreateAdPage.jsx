@@ -4,7 +4,7 @@ import "./CreateAdPage.css"; // import custom CSS
 const BasseUrl = import.meta.env.VITE_BASE_URL
 // === Helper functions ===
 const getCloudinarySignature = async (folder = "ads_images") => {
-  const res = await axios.get(`https://learning-backend-rust.vercel.app/api/cloudinary/signature?folder=${folder}`);
+  const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/cloudinary/signature?folder=${folder}`);
   return res.data;
 };
 

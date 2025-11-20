@@ -52,7 +52,7 @@ const CreateUpdate = ({ course, onSave, onCancel }) => {
 
   const getCloudinarySignature = async (folder = "course_thumbnails") => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cloudinary/signature?folder=${folder}`);
+      const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/cloudinary/signature?folder=${folder}`);
       console.log(res);
       return res.data;
       
@@ -129,7 +129,7 @@ const CreateUpdate = ({ course, onSave, onCancel }) => {
 
   const fetchTechStacks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/v1/techstack/");
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/techstack/`);
       setTechStacks(response.data);
     } catch (error) {
       console.error("Error fetching tech stacks:", error);
@@ -138,8 +138,8 @@ const CreateUpdate = ({ course, onSave, onCancel }) => {
 
   const fetchTests = async () => {
     try {
-      const response = await axios.get("/api/tests");
-      setTests( []);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/tests`);
+      setTests(response.data | []);
     } catch (error) {
       console.error("Error fetching tests:", error);
       setTests([]);
@@ -148,8 +148,8 @@ const CreateUpdate = ({ course, onSave, onCancel }) => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("/api/books");
-      setBooks( []);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/books`);
+      setBooks(response.data | []);
     } catch (error) {
       console.error("Error fetching books:", error);
       setBooks([]);
@@ -289,9 +289,9 @@ const CreateUpdate = ({ course, onSave, onCancel }) => {
 
       // === 4️⃣ Send to backend ===
       if (course) {
-        await axios.put(`http://localhost:5000/api/v1/courses/${course._id}`, payload);
+        await axios.put(`${import.meta.env.VITE_BASE_URL}/courses/${course._id}`, payload);
       } else {
-        await axios.post('http://localhost:5000/api/v1/courses', payload);
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/courses`, payload);
       }
 
       onSave && onSave();

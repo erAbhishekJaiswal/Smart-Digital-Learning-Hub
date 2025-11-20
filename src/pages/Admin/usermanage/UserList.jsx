@@ -24,7 +24,7 @@ const UserList = () => {
 
     const fatchUsers = async () => {
       try {
-        const response = await fetch('https://learning-backend-rust.vercel.app/api/v1/users/'); // Replace with your API endpoint
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/`); // Replace with your API endpoint
         const data = await response.json();
         console.log(data);
         

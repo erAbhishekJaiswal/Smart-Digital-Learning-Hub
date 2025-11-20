@@ -51,7 +51,7 @@ const TestList = () => {
     // ];
 
     try {
-      const response = await fetch("https://learning-backend-rust.vercel.app/api/test/");
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/test/`);
       const data = await response.json();
       console.log(data);
 
@@ -77,7 +77,7 @@ const TestList = () => {
       setTests((prev) => prev.filter((test) => test._id !== testId));
     }
     try {
-      const response = await fetch(`https://learning-backend-rust.vercel.app/api/test/${testId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/test/${testId}`, {
         method: "DELETE",
       });
       const data = await response.json();

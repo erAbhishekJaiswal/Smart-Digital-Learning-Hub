@@ -24,6 +24,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon:  <FaBook />, label: 'Book List', path: '/admin/bookslist' },
     { icon: <MdOutlineQuiz />, label: 'Test List', path: '/admin/testlist' },
     { icon: <IoIosAddCircleOutline />, label: 'Create Company', path: '/admin/addcompany' },
+    { icon: <IoIosAddCircleOutline />, label: 'Post Job', path: '/admin/postjob' },
     { icon: <IoMdListBox />, label: 'Job Applications', path: '/admin/applicationlist' },
     // { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
     // { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }

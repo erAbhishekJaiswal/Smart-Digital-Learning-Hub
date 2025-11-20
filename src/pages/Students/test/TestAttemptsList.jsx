@@ -67,7 +67,7 @@ const TestAttemptsList = () => {
   const handleDownloadCertificate = async (attemptId) => {
       try {
     const response = await axios.get(
-      `https://learning-backend-rust.vercel.app/api/test/attempts/${attemptId}/certificate`,
+      `${import.meta.env.VITE_BASE_URL}/test/attempts/${attemptId}/certificate`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }

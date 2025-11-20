@@ -103,7 +103,7 @@ const AddQuestion = () => {
     // Simulate API call
     // await new Promise((res) => setTimeout(res, 1500));
 
-    const res = await axios.post(`https://learning-backend-rust.vercel.app/api/test/${testId}/questions`, questions);
+    const res = await axios.post(`${BasseUrl}/test/${testId}/questions`, questions);
     const data = res.data;
     console.log(data);
 
