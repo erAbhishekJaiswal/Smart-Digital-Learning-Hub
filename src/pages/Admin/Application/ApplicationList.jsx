@@ -1326,7 +1326,7 @@ const ApplicationList = () => {
                     </td>
                     <td>
                       <div className="salary">
-                        ${parseInt(application?.salaryExpectation).toLocaleString()}
+                        ₹{parseInt(application?.salaryExpectation).toLocaleString()}
                       </div>
                     </td>
                     <td>
