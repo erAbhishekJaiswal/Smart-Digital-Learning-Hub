@@ -302,7 +302,7 @@ a:hover {
 
 /* --- 3. Copyright Bar --- */
 .footer-copyright {
-    background-color: #07132a; /* Slightly darker blue for the copyright bar */
+    background-color: #002147; /* Slightly darker blue for the copyright bar */
     padding: 15px 0;
     text-align: center;
     font-size: 0.85em;
@@ -310,6 +310,9 @@ a:hover {
 
 .footer-copyright p {
     margin: 0;
+    font-size: 14px;
+    font-family: Helvetica;
+    padding: 1px 24px;
 }
 
 /* --- Responsive Adjustments (Basic) --- */

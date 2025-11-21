@@ -262,6 +262,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import "./PdfBookReader.css";
 import { useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const BasseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -497,6 +498,11 @@ const PdfBookReader = () => {
     return Array.from({ length: numPages }, (_, i) => i + 1);
   }, [numPages]);
 
+  // back button handler
+  const handleBack = () => {
+    window.history.back();
+  }
+
   if (loading) {
     return (
       <div className="pdf-book-reader__loading">
@@ -554,6 +560,11 @@ const PdfBookReader = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
+        <div className="home-back-button">
+          <button className="back-button" onClick={handleBack}>
+            <FaArrowLeft />
+          </button>
+        </div>
         <div className="pdf-book-reader__book-info">
           <h2>{bookInfo?.title || "PDF Book Reader"}</h2>
           <p>{bookInfo?.author || "Unknown Author"}</p>

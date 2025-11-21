@@ -137,7 +137,7 @@
 //                 {filteredJobs.map((job) => (
 //                   <div
 //                     key={job._id}
-//                     className={`job-card ${job.isActive ? "featured" : ""}`}
+//                     className={`jobportal-card ${job.isActive ? "featured" : ""}`}
 //                     onClick={() => {
 //                       setSelectedJob(job);
 //                       setShowJobDetails(true);
@@ -480,7 +480,7 @@ const JobPortal = () => {
                 </div> */}
               </div>
 
-              <div className="jobs-grid">
+              <div className="jobportal-card-container">
                 {filteredJobs.length === 0 ? (
                   <div className="no-jobs-message">
                     <h4>No jobs found</h4>
@@ -490,7 +490,7 @@ const JobPortal = () => {
                   filteredJobs.map((job) => (
                     <div
                       key={job._id}
-                      className={`job-card ${job.isActive ? "featured" : ""}`}
+                      className={`jobportal-card ${job.isActive ? "featured" : ""}`}
                       onClick={() => handleJobSelect(job)}
                     >
                       {job.isActive && <div className="featured-badge">Active</div>}
@@ -559,11 +559,11 @@ const JobPortal = () => {
                   />
                 ) : (
                   <>
-                    <div className="sidebar-widget">
+                    {/* <div className="sidebar-widget">
                       <h4 className="widget-title">Create Job Alert</h4>
                       <p className="widget-text">Get notified when new jobs match your search</p>
                       <button className="alert-btn">Create Alert</button>
-                    </div>
+                    </div> */}
 
                     <div className="sidebar-widget">
                       <h4 className="widget-title">Top Companies</h4>
@@ -845,7 +845,7 @@ export default JobPortal;
 //                 {filteredJobs.map((job) => (
 //                   <div
 //                     key={job.id}
-//                     className={`job-card ${job.featured ? "featured" : ""}`}
+//                     className={`jobportal-card ${job.featured ? "featured" : ""}`}
 //                     onClick={() => {
 //                       setSelectedJob(job);
 //                       setShowJobDetails(true);

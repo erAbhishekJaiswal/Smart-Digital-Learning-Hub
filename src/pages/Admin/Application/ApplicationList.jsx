@@ -1269,7 +1269,7 @@ const ApplicationList = () => {
                   </div>
                 </th>
                 <th>Source</th>
-                <th>Status</th>
+                {/* <th>Status</th> */}
                 <th 
                   className="sortable-header"
                   onClick={() => handleSort('createdAt')}
@@ -1303,7 +1303,7 @@ const ApplicationList = () => {
                     <td>
                       <div className="candidate-cell">
                         <div className="candidate-avatar">
-                          {application.fullName.split(' ').map(n => n[0]).join('')}
+                          {application?.fullName.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div className="candidate-info">
                           <div className="candidate-name">{application?.fullName}</div>
@@ -1312,11 +1312,11 @@ const ApplicationList = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="application-job-title">{application?.job.title}</div>
-                      <div className="application-company-name">{application?.job.company}</div>
+                      <div className="application-job-title">{application?.job?.title}</div>
+                      <div className="application-company-name">{application?.job?.company}</div>
                     </td>
                     <td>
-                      <div className="application-location">{application?.job.location}</div>
+                      <div className="application-location">{application?.job?.location}</div>
                     </td>
                     <td>
                       <div className="application-contact-info">
@@ -1337,7 +1337,7 @@ const ApplicationList = () => {
                         {application?.source}
                       </div>
                     </td>
-                    <td>
+                    {/* <td>
                       <select
                         className={`status-select status-${application?.status.toLowerCase().replace(' ', '-')}`}
                         value={application.status}
@@ -1351,7 +1351,7 @@ const ApplicationList = () => {
                         <option value="Rejected">Rejected</option>
                         <option value="Hired">Hired</option>
                       </select>
-                    </td>
+                    </td> */}
                     <td>
                       <div className="application-date">
                         {formatDate(application?.createdAt)}
@@ -1551,7 +1551,7 @@ const ApplicationDetailsModal = ({ application, onClose, onStatusUpdate, getStat
                   </a>
                 </span>
               </div>
-              <div className="info-item">
+              {/* <div className="info-item">
                 <label>Status:</label>
                 <select
                   className="status-select-modal"
@@ -1566,7 +1566,7 @@ const ApplicationDetailsModal = ({ application, onClose, onStatusUpdate, getStat
                   <option value="Rejected">Rejected</option>
                   <option value="Hired">Hired</option>
                 </select>
-              </div>
+              </div> */}
             </div>
           </div>
 
