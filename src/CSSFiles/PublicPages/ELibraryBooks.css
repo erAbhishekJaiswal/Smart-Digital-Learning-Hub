@@ -923,9 +923,9 @@
     gap: 1rem;
   }
   
-  .elibrary__book-actions {
+  /* .elibrary__book-actions {
     grid-template-columns: 1fr;
-  }
+  } */
   
   .elibrary__sidebar {
     width: 100%;
