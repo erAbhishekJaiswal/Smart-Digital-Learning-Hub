@@ -311,7 +311,7 @@ const ELibraryBooks = () => {
       <div className="elibrary__ads-sidebar">
         <div className="elibrary__ads-header">
           <div className="elibrary__ads-title">
-            <h3>KumarInfoTech</h3>
+            <h3>Kumarinfotech</h3>
             <span className="elibrary__ad-badge">Ads</span>
           </div>
         </div>

@@ -10,8 +10,11 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { isUserLoggedIn, getUserRole } from "../../utils/localstorage";
 import { useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -48,6 +51,10 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const isActive = (path) => {
+    return location.pathname === path ? "active-nav" : "";
+  };
+
   return (
     <header className="header-bar" ref={menuRef}>
       {/* 🔹 TOP BAR */}
@@ -55,52 +62,77 @@ const Header = () => {
         <div className="header-bar-top-inner">
           <div className="header-bar-phones">
             <FaMobileAlt />
-            <a className="header-kit-icons" href="tel:+917725064078">+91 7725064078</a>
+            <a className="header-kit-icons" href="tel:+917725064078">
+              +91 7725064078
+            </a>
             <span className="divider">/</span>
-            <a className="header-kit-icons" href="tel:+918451924078">+91 8451924078</a>
+            <a className="header-kit-icons" href="tel:+918451924078">
+              +91 8451924078
+            </a>
           </div>
 
           <div className="header-bar-social">
             <ul className="header-bar-social-list">
-              <li className="heder-bar-social-icon-list"><a className="header-kit-icons" href="https://www.facebook.com/kumarinfotech020">
-                <FaFacebookF />
-              </a></li>|
-
-              <li className="heder-bar-social-icon-list"> <a className="header-kit-icons" href="https://www.instagram.com/kumarinfotech_it_services">
-                <FaInstagram />
-              </a></li>|
-
-              <li className="heder-bar-social-icon-list"><a className="header-kit-icons" href="https://www.linkedin.com/in/kumarinfotech20">
-                <FaLinkedinIn />
-              </a></li>|
-
-              <li className="heder-bar-social-icon-list"><a className="header-kit-icons" href="https://twitter.com/kumarinfotech20">
-                <IoLogoTwitter />
-              </a></li>|
-
-              <li className="heder-bar-social-icon-list"><a className="header-kit-icons" href="https://www.youtube.com/kumarinfotech20">
-                <TfiYoutube />
-              </a></li>|
-
-              <li className="heder-bar-social-icon-list"> 
+              <li className="heder-bar-social-icon-list">
                 <a
-                className="header-kit-icons google-review-navbar-link"
-                href="https://g.page/r/CaTVvcqNsGqVEBM/review"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://www.kumarinfotech.com/img/reviewImage.png"
-                  alt="Google Review"
-                  className="google-review"
-                />
-              </a></li>
-             
-              
-              
-            
-
-             
+                  className="header-kit-icons"
+                  href="https://www.facebook.com/kumarinfotech020"
+                >
+                  <FaFacebookF />
+                </a>
+              </li>
+              |
+              <li className="heder-bar-social-icon-list">
+                {" "}
+                <a
+                  className="header-kit-icons"
+                  href="https://www.instagram.com/kumarinfotech_it_services"
+                >
+                  <FaInstagram />
+                </a>
+              </li>
+              |
+              <li className="heder-bar-social-icon-list">
+                <a
+                  className="header-kit-icons"
+                  href="https://www.linkedin.com/in/kumarinfotech20"
+                >
+                  <FaLinkedinIn />
+                </a>
+              </li>
+              |
+              <li className="heder-bar-social-icon-list">
+                <a
+                  className="header-kit-icons"
+                  href="https://twitter.com/kumarinfotech20"
+                >
+                  <IoLogoTwitter />
+                </a>
+              </li>
+              |
+              <li className="heder-bar-social-icon-list">
+                <a
+                  className="header-kit-icons"
+                  href="https://www.youtube.com/kumarinfotech20"
+                >
+                  <TfiYoutube />
+                </a>
+              </li>
+              |
+              <li className="heder-bar-social-icon-list">
+                <a
+                  className="header-kit-icons google-review-navbar-link"
+                  href="https://g.page/r/CaTVvcqNsGqVEBM/review"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://www.kumarinfotech.com/img/reviewImage.png"
+                    alt="Google Review"
+                    className="google-review"
+                  />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -110,62 +142,117 @@ const Header = () => {
       <div className="header-bar-main">
         <div className="header-bar-main-inner-logo-btn">
           <div className="header-bar-logo">
-          <a href="https://www.kumarinfotech.net/">
-            <img
-              src="https://www.kumarinfotech.com/img/logo/kitlogonew.webp"
-              alt="Kumarinfotech Logo"
-              className="logo-img"
-            />
-          </a>
-        </div>
+            <a href="https://www.kumarinfotech.net/">
+              <img
+                src="https://www.kumarinfotech.com/img/logo/kitlogonew.webp"
+                alt="Kumarinfotech Logo"
+                className="logo-img"
+              />
+            </a>
+          </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="menu-toggle"
-          onClick={(e) => {
-            e.stopPropagation();
-            setMenuOpen(!menuOpen);
-          }}
-        >
-          {menuOpen ? <HiX /> : <FaBars />}
-        </button>
+          {/* Mobile Toggle */}
+          <button
+            className="menu-toggle"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMenuOpen(!menuOpen);
+            }}
+          >
+            {menuOpen ? <HiX /> : <FaBars />}
+          </button>
         </div>
-        
 
         {/* Mobile + Desktop Menu */}
         <div className={`public-header-bar-btn ${menuOpen ? "active" : ""}`}>
           <nav className="public-header-bar-links">
             <ul className="public-header-list-ul">
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/">Home</a>
+                <a
+                  className={
+                    window.location.href.includes("it-training-centre")
+                      ? "active-nav"
+                      : ""
+                  }
+                  href="https://www.kumarinfotech.net/"
+                >
+                  Home
+                </a>
               </li>
               <li className="public-header-list-li">
-                <button onClick={() => handleNavClick("/")}>E-Learning</button>
+                <button
+                  className={isActive("/")}
+                  onClick={() => handleNavClick("/")}
+                >
+                  E-Learning
+                </button>
               </li>
               <li className="public-header-list-li">
-                <button onClick={() => handleNavClick("/jobportal")}>
+                <button
+                  className={isActive("/jobportal")}
+                  onClick={() => handleNavClick("/jobportal")}
+                >
                   Jobs
                 </button>
               </li>
               {/* make the redirect to on the links */}
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/it-training-centre">IT Training</a>
+                <a
+                  className={
+                    window.location.href.includes("it-training-centre")
+                      ? "active-nav"
+                      : ""
+                  }
+                  href="https://www.kumarinfotech.net/it-training-centre"
+                >
+                  IT Training
+                </a>
               </li>
 
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/aboutus">About Us</a>
+                <a
+                  className={
+                    window.location.href.includes("aboutus") ? "active-nav" : ""
+                  }
+                  href="https://www.kumarinfotech.net/aboutus"
+                >
+                  About Us
+                </a>
               </li>
               {/* <li><button onClick={() => handleNavClick("#services")}>Services</button></li> */}
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/it-internship-training">
+                <a
+                  className={
+                    window.location.href.includes("internship")
+                      ? "active-nav"
+                      : ""
+                  }
+                  href="https://www.kumarinfotech.net/it-internship-training"
+                >
                   Internship
                 </a>
               </li>
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/career">Career</a>
+                <a
+                  className={
+                    window.location.href.includes("career") ? "active-nav" : ""
+                  }
+                  href="https://www.kumarinfotech.net/career"
+                >
+                  Career
+                </a>
               </li>
               <li className="public-header-list-li">
-                <a href="https://www.kumarinfotech.net/contactus">Contact Us</a>
+                <a
+                  className={
+                    window.location.href.includes("contactus")
+                      ? "active-nav"
+                      : ""
+                  }
+                  href="https://www.kumarinfotech.net/contactus"
+                >
+                  Contact Us
+                </a>
               </li>
             </ul>
           </nav>
@@ -213,7 +300,9 @@ const Header = () => {
           onMouseOver={(e) => e.target.stop()}
           onMouseOut={(e) => e.target.start()}
         >
-          ⭐ Internship ⭐ Corporate IT Training ⭐ 100% Job Assistance ⭐ Highly Experience Trainers ⭐ Cyber Security ⭐ Python ⭐ Fullstack in Dotnet ⭐ Mernstack Development ⭐ Fullstack Development
+          ⭐ Internship ⭐ Corporate IT Training ⭐ 100% Job Assistance ⭐
+          Highly Experience Trainers ⭐ Cyber Security ⭐ Python ⭐ Fullstack in
+          Dotnet ⭐ Mernstack Development ⭐ Fullstack Development
         </marquee>
       </div>
     </header>

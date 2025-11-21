@@ -263,6 +263,25 @@
   padding: 2px;
 }
 
+/* Active Link */
+.active-nav {
+  color: #fcb900 !important;
+  border-bottom: 2px solid #fcb900;
+}
+
+.public-header-bar-links button.active-nav {
+  color: #fcb900 !important;
+  border-bottom: 2px solid #fcb900;
+}
+
+@media (max-width: 992px) {
+  .active-nav {
+    color: #fcb900 !important;
+    background: #0f2a38;
+  }
+}
+
+
 /* ✅ Responsive Design */
 @media (max-width: 992px) {
   .header-bar-top-inner {
