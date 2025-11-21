@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './AdminJobsList.css';
+import { useNavigate } from 'react-router-dom';
+const BasseUrl = import.meta.env.VITE_BASE_URL
 
 const AdminJobsList = () => {
+    const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,7 +29,7 @@ const AdminJobsList = () => {
   const fetchJobs = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8000/api/v1/jobs/admin');
+      const response = await axios.get(`${BasseUrl}/jobs/admin`);
       const jobsData = response.data;
       
       setJobs(jobsData);
@@ -159,7 +162,7 @@ const AdminJobsList = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8000/api/v1/jobs/${editingJob._id}`, editingJob);
+      await axios.put(`${BasseUrl}/jobs/${editingJob._id}`, editingJob);
       await fetchJobs();
       setShowEditModal(false);
       setEditingJob(null);
@@ -175,7 +178,7 @@ const AdminJobsList = () => {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/jobs/${jobToDelete._id}`);
+      await axios.delete(`${BasseUrl}/jobs/${jobToDelete._id}`);
       await fetchJobs();
       setShowDeleteModal(false);
       setJobToDelete(null);
@@ -186,7 +189,7 @@ const AdminJobsList = () => {
 
   const toggleJobStatus = async (job) => {
     try {
-      await axios.put(`http://localhost:8000/api/v1/jobs/${job._id}`, {
+      await axios.put(`${BasseUrl}/jobs/${job._id}`, {
         isActive: !job.isActive
       });
       await fetchJobs();
@@ -211,6 +214,10 @@ const AdminJobsList = () => {
 
   const paginatedJobs = getPaginatedJobs();
 
+  const handleAddJob = () => {
+    navigate('/admin/postjob');
+  }
+
   return (
     <div className="adminjobs-container">
       {/* Header */}
@@ -231,6 +238,11 @@ const AdminJobsList = () => {
               </span>
               <span className="adminjobs-stat-label">Active Jobs</span>
             </div>
+          </div>
+          <div className="adminjobs-header-actions">
+            <button className="adminjobs-add-job-btn" onClick={handleAddJob}>
+              Add Job
+            </button>
           </div>
         </div>
       </div>

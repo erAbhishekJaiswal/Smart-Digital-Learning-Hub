@@ -945,9 +945,9 @@ import ComingSoon from '../shared/ComingSoon'
 
 const AskToAI = () => {
   return (
-    <div>
+    <>
       <ComingSoon />
-    </div>
+    </>
   );
 }
 

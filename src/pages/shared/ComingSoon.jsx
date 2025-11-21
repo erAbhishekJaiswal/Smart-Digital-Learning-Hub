@@ -1,9 +1,12 @@
 import React from "react";
 import "../../CSSFiles/shared/ComingSoon.css";
-
+import { FaArrowLeft } from "react-icons/fa";
 const ComingSoon = () => {
   return (
     <div className="cs-wrapper">
+      <div className="back-to-home">
+              <a href="https://elearning.kumarinfotech.net/" className="back-to-home-btn"> <FaArrowLeft /> Back to Home</a>
+              </div>
       <div className="cs-content-box">
         <h1 className="cs-title">Coming Soon</h1>
         <p className="cs-subtitle">

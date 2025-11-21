@@ -12,6 +12,8 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  gap: 12px;
+  flex-direction: column;
 }
 
 .login-container {
@@ -22,6 +24,23 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   animation: fadeIn 0.8s ease-out;
+}
+
+.back-to-home{
+  width: 100%;
+  text-align:start;
+  margin-top: 10px;
+}
+.back-to-home-btn{
+  color: var(--primary-blue);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.back-to-home-btn:hover{
+  /* background: var(--primary-blue); */
+  color: #8eb1ff;
+  transform: translateX(-5px);
 }
 
 @keyframes fadeIn {

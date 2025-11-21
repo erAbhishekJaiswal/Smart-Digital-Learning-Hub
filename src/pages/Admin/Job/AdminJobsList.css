@@ -80,6 +80,21 @@
   gap: 20px;
 }
 
+.adminjobs-header-actions{
+  display: flex;
+}
+
+.adminjobs-add-job-btn{
+  background: var(--adminjobs-primary-blue);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--adminjobs-border-radius);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
 .adminjobs-stat-card {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.3);

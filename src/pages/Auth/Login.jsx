@@ -13,6 +13,7 @@ import {
 // import { loginUser } from "../../Api/AuthApi";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { FaArrowLeft } from "react-icons/fa";
 const BasseUrl = import.meta.env.VITE_BASE_URL
 
 const Login = () => {
@@ -66,8 +67,13 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      <div className="back-to-home">
+        <a href="https://elearning.kumarinfotech.net/" className="back-to-home-btn"> <FaArrowLeft /> Back to Home</a>
+        </div>
     <div className="login-container">
+      
       <div className="login-header">
+        
         <h1>Welcome Back</h1>
         <p>Sign in to your account</p>
       </div>

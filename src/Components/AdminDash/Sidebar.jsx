@@ -14,6 +14,7 @@ import { FaAd } from "react-icons/fa";
 import { SiCoursera } from "react-icons/si";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoMdListBox } from "react-icons/io";
+import { CiBoxList } from "react-icons/ci";
 const Sidebar = ({ isOpen, onClose, darkMode }) => {
   const menuItems = [
     { icon: <MdDashboard />, label: 'Dashboard', path: '/admin/dashboard' }, //active: true,
@@ -24,7 +25,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon:  <FaBook />, label: 'Book List', path: '/admin/bookslist' },
     { icon: <MdOutlineQuiz />, label: 'Test List', path: '/admin/testlist' },
     { icon: <IoIosAddCircleOutline />, label: 'Create Company', path: '/admin/addcompany' },
-    { icon: <IoIosAddCircleOutline />, label: 'Post Job', path: '/admin/postjob' },
+    { icon: <CiBoxList />, label: 'JobList', path: '/admin/joblist' },
     { icon: <IoMdListBox />, label: 'Job Applications', path: '/admin/applicationlist' },
     // { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
     // { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }
