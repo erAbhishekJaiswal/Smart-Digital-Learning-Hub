@@ -1,8 +1,453 @@
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import "../../CSSFiles/PublicPages/ELibraryBooks.css";
+// const BasseUrl = import.meta.env.VITE_BASE_URL
+// const ELibraryBooks = () => {
+//   const navigate = useNavigate();
+//   const [books, setBooks] = useState([]);
+//   const [filteredBooks, setFilteredBooks] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [selectedCategory, setSelectedCategory] = useState("all");
+//   const [categories, setCategories] = useState([]);
+//   const [sidebarOpen, setSidebarOpen] = useState(false);
+//   const [ads, setAds] = useState([]);
+//   const [selectedCategoryType, setSelectedCategoryType] = useState("all");
+
+//   const fetchAds = async () => {
+//     try {
+//       const response = await axios.get(
+//         `${BasseUrl}/ads/landingpage`
+//       );
+//       setAds(response.data);
+//     } catch (error) {
+//       console.log("Error fetching ads:", error);
+//     }
+//   };
+
+//   const fetchBooks = async () => {
+//     try {
+//       setLoading(true);
+//       const response = await axios.get(`${BasseUrl}/ebooks`);
+//       const data = response.data || [];
+
+//       setBooks(data);
+//       setFilteredBooks(data);
+
+//       // Extract unique tech stacks
+//       const uniqueTechStacks = [];
+//       data.forEach((book) => {
+//         if (
+//           book.techStack &&
+//           !uniqueTechStacks.some((t) => t._id === book.techStack._id)
+//         ) {
+//           uniqueTechStacks.push(book.techStack);
+//         }
+//       });
+
+//       setCategories(uniqueTechStacks);
+//     } catch (error) {
+//       console.error("Error fetching books:", error);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchBooks();
+//     fetchAds();
+//   }, []);
+
+//   useEffect(() => {
+//     filterBooks();
+//   }, [books, searchTerm, selectedCategory]);
+
+//   const handleSearch = (e) => {
+//     setSearchTerm(e.target.value);
+//   };
+
+//   const handleCategorySelect = (id, type = "all") => {
+//     setSelectedCategory(id);
+//     setSelectedCategoryType(type);
+//     setSidebarOpen(false);
+//   };
+
+//   const filterBooks = () => {
+//     let filtered = books;
+
+//     // Text search
+//     if (searchTerm) {
+//       filtered = filtered.filter(
+//         (book) =>
+//           book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//           book.author?.toLowerCase().includes(searchTerm.toLowerCase())
+//       );
+//     }
+
+//     // Tech Stack / Subcategory filtering
+//     if (selectedCategory !== "all") {
+//       if (selectedCategoryType === "stack") {
+//         filtered = filtered.filter(
+//           (book) => book.techStack?._id === selectedCategory
+//         );
+//       } else if (selectedCategoryType === "subcategory") {
+//         filtered = filtered.filter(
+//           (book) => book.techStacksubcategory === selectedCategory
+//         );
+//       }
+//     }
+
+//     setFilteredBooks(filtered);
+//   };
+
+//   const clearFilters = () => {
+//     setSearchTerm("");
+//     setSelectedCategory("all");
+//     setFilteredBooks(books);
+//   };
+
+//   const handleReadBook = (book) => {
+//     const fileUrl = encodeURIComponent(book.filePublicId);
+//     navigate(`/pdfbooks/${fileUrl}`);
+//   };
+
+//   const onTestSkill = (bookId) => {
+//     navigate(`/testattempt/${bookId}`);
+//   };
+
+//   const handleCodeYourself = () => {
+//     navigate(`/codeeditor`);
+//   };
+
+//   const handleAsktoAI = () => {
+//     navigate(`/asktoai`);
+//   };
+
+//   return (
+//     <div className="elibrary__container">
+//       {/* Left Sidebar */}
+//       <div className={`elibrary__sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
+//         <div className="elibrary__sidebar-header">
+//           <div className="elibrary__sidebar-title">
+//             <div className="elibrary__sidebar-icon">📚</div>
+//             <h3>Categories</h3>
+//           </div>
+//           <button
+//             className="elibrary__close-sidebar"
+//             onClick={() => setSidebarOpen(false)}
+//             aria-label="Close sidebar"
+//           >
+//             ×
+//           </button>
+//         </div>
+
+//         <div className="elibrary__category-section">
+//           <div className="elibrary__section-header">
+//             <h4>Tech Stack</h4>
+//           </div>
+//           <div className="elibrary__category-list">
+//             <button
+//               className={`elibrary__category-item ${
+//                 selectedCategory === "all" ? "active" : ""
+//               }`}
+//               onClick={() => handleCategorySelect("all")}
+//             >
+//               <span className="elibrary__category-icon">🌐</span>
+//               <span className="elibrary__category-text">All Books</span>
+//               <span className="elibrary__category-count">{books.length}</span>
+//             </button>
+
+//             {categories.map((stack) => {
+//               const isExpanded =
+//                 selectedCategory === stack._id || stack.expanded;
+
+//               return (
+//                 <div key={stack._id} className="elibrary__techstack-group">
+//                   <button
+//                     className={`elibrary__category-item ${
+//                       selectedCategory === stack._id ? "active" : ""
+//                     }`}
+//                     onClick={() =>
+//                       setCategories((prev) =>
+//                         prev.map((cat) =>
+//                           cat._id === stack._id
+//                             ? { ...cat, expanded: !cat.expanded }
+//                             : { ...cat, expanded: false }
+//                         )
+//                       )
+//                     }
+//                   >
+//                     {/* <span className="elibrary__category-icon">
+//                       {stack.icon || "💻"}
+//                     </span> */}
+//                     <span className="elibrary__category-text">
+//                       {stack.name}
+//                     </span>
+//                     {stack.subcategories?.length > 0 && (
+//                       <span
+//                         className={`elibrary__expand-arrow ${
+//                           stack.expanded ? "rotated" : ""
+//                         }`}
+//                       >
+//                         ▼
+//                       </span>
+//                     )}
+//                   </button>
+
+//                   {/* Expandable Subcategories */}
+//                   <div
+//                     className={`elibrary__subcategory-wrapper ${
+//                       stack.expanded ? "expanded" : ""
+//                     }`}
+//                   >
+//                     {stack.subcategories?.map((sub) => (
+//                       <button
+//                         key={sub._id}
+//                         className={`elibrary__subcategory-item ${
+//                           selectedCategory === sub._id ? "active" : ""
+//                         }`}
+//                         onClick={() =>
+//                           handleCategorySelect(sub._id, "subcategory")
+//                         }
+//                       >
+//                         <span className="elibrary__subcategory-icon">↳</span>
+//                         <span className="elibrary__subcategory-text">
+//                           {sub.name}
+//                         </span>
+//                       </button>
+//                     ))}
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         <div className="elibrary__sidebar-footer">
+//           <button
+//             className="elibrary__clear-filters-btn"
+//             onClick={clearFilters}
+//           >
+//             <span className="elibrary__clear-icon">🗑️</span>
+//             Clear Filters
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Main Content */}
+//       <div className="elibrary__main-content">
+//         <header className="elibrary__header">
+//           <div className="elibrary__header-content">
+//             <div className="elibrary__search-section">
+//               <div className="elibrary__search-container">
+//                 <div className="elibrary__search-input-wrapper">
+//                   <input
+//                     type="text"
+//                     placeholder="Search books by title or author..."
+//                     value={searchTerm}
+//                     onChange={handleSearch}
+//                     className="elibrary__search-input"
+//                   />
+//                   <button className="elibrary__search-btn" aria-label="Search">
+//                     <span className="elibrary__search-icon">🔍</span>
+//                   </button>
+//                 </div>
+//               </div>
+
+//               <div className="elibrary__header-stats">
+//                 {
+//                   <button
+//                     className="elibrary__stats-badge"
+//                     onClick={() => setSidebarOpen(!sidebarOpen)}
+//                     aria-label="Toggle sidebar"
+//                   >
+//                     <span className="elibrary__toggle-icon">☰</span>
+//                     <span className="elibrary__toggle-text">Categories</span>
+//                   </button>
+//                 }
+//               </div>
+//             </div>
+//           </div>
+//         </header>
+
+//         {/* Books Grid */}
+//         <main className="elibrary__books-main">
+//           {loading ? (
+//             <div className="elibrary__loading-container">
+//               <div className="elibrary__loading-spinner"></div>
+//               <p>Loading books...</p>
+//             </div>
+//           ) : filteredBooks.length === 0 ? (
+//             <div className="elibrary__no-books">
+//               <div className="elibrary__no-books-icon">📚</div>
+//               <h3>No books found</h3>
+//               <p>Try adjusting your search or filters</p>
+//               <button
+//                 className="elibrary__clear-filters-btn-large"
+//                 onClick={clearFilters}
+//               >
+//                 Clear All Filters
+//               </button>
+//             </div>
+//           ) : (
+//             <div className="elibrary__books-grid">
+//               {filteredBooks.map((book) => (
+//                 <BookCard
+//                   key={book._id}
+//                   book={book}
+//                   handleCodeYourself={handleCodeYourself}
+//                   onRead={handleReadBook}
+//                   onTestSkill={onTestSkill}
+//                   handleAsktoAI={handleAsktoAI}
+//                 />
+//               ))}
+//             </div>
+//           )}
+//         </main>
+//       </div>
+
+//       {/* Right Sidebar - Ads */}
+//       <div className="elibrary__ads-sidebar">
+//         <div className="elibrary__ads-header">
+//           <div className="elibrary__ads-title">
+//             <h3>Kumarinfotech</h3>
+//             <span className="elibrary__ad-badge">Ads</span>
+//           </div>
+//         </div>
+//         <div className="elibrary__ads-container">
+//           {ads.map((ad) => (
+//             <AdCard key={ad._id} ad={ad} />
+//           ))}
+//           {ads.length === 0 && (
+//             <div className="elibrary__no-ads">
+//               <div className="elibrary__no-ads-icon">✨</div>
+//               <p>No featured content available</p>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+
+//       {sidebarOpen && (
+//         <div
+//           className="elibrary__sidebar-overlay"
+//           onClick={() => setSidebarOpen(false)}
+//         ></div>
+//       )}
+//     </div>
+//   );
+// };
+
+// // Book Card Component
+// const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself, handleAsktoAI }) => {
+//   return (
+//     <div className="elibrary__book-card">
+//       <div className="elibrary__book-image-container">
+//         <div className="elibrary__book-image">
+//           {book.coverImage ? (
+//             <img src={book.coverImage} alt={book.title} loading="lazy" />
+//           ) : (
+//             <div className="elibrary__book-image-placeholder">
+//               <span className="elibrary__book-emoji">📘</span>
+//             </div>
+//           )}
+//         </div>
+//         <div className="elibrary__book-badge">
+//           ⭐ {book.averageRating || "New"}
+//         </div>
+//       </div>
+
+//       <div className="elibrary__book-content">
+//         <h3 className="elibrary__book-title" title={book.title}>
+//           {book.title}
+//         </h3>
+
+//         {/* {book.author && (
+//           <p className="elibrary__book-author">By {book.author}</p>
+//         )} */}
+
+//         {/* {book.techStack && (
+//           <div className="elibrary__book-tech">
+//             <span className="elibrary__tech-badge">{book.techStack.name}</span>
+//           </div>
+//         )} */}
+
+//         <div className="elibrary__book-actions">
+//           <button
+//             className="elibrary__action-btn elibrary__read-btn"
+//             onClick={() => onRead(book)}
+//           >
+//             <span className="elibrary__btn-icon">👁️</span>
+//             View/Read
+//           </button>
+//           <button
+//             className="elibrary__action-btn elibrary__test-btn"
+//             onClick={() => onTestSkill(book._id)}
+//           >
+//             <span className="elibrary__btn-icon">🧪</span>
+//             Test Skill
+//           </button>
+//           <button
+//             className="elibrary__action-btn elibrary__ai-btn"
+//             onClick={handleAsktoAI}
+//           >
+//             <span className="elibrary__btn-icon">🤖</span>
+//             Ask AI
+//           </button>
+//           <button
+//             className="elibrary__action-btn elibrary__code-yourself"
+//             onClick={handleCodeYourself}
+//           >
+//             <span className="elibrary__btn-icon">💻</span>
+//             Code Yourself
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // Ad Card Component
+// const AdCard = ({ ad }) => (
+//   <div className="elibrary__ad-card">
+//     <div className="elibrary__ad-image">
+//       <img src={ad.image} alt={ad.title} loading="lazy" />
+//       <div className="elibrary__ad-overlay">KIT</div>
+//     </div>
+//     <div className="elibrary__ad-content">
+//       <h4 className="elibrary__ad-title">{ad.title}</h4>
+//       <p className="elibrary__ad-description">{ad.description}</p>
+//       <button
+//         className="elibrary__ad-cta-btn"
+//         onClick={() => window.open(ad.link, "_blank")}
+//       >
+//         Learn More
+//         <span className="elibrary__ad-cta-icon">→</span>
+//       </button>
+//     </div>
+//   </div>
+// );
+
+// export default ELibraryBooks;
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../CSSFiles/PublicPages/ELibraryBooks.css";
 const BasseUrl = import.meta.env.VITE_BASE_URL
+
 const ELibraryBooks = () => {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
@@ -14,6 +459,7 @@ const ELibraryBooks = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [ads, setAds] = useState([]);
   const [selectedCategoryType, setSelectedCategoryType] = useState("all");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   const fetchAds = async () => {
     try {
@@ -57,6 +503,13 @@ const ELibraryBooks = () => {
   useEffect(() => {
     fetchBooks();
     fetchAds();
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -124,6 +577,58 @@ const ELibraryBooks = () => {
     navigate(`/asktoai`);
   };
 
+  // Function to intersperse ads between books for mobile view
+  // const getBooksWithAds = () => {
+  //   if (!isMobile || ads.length === 0) {
+  //     return filteredBooks.map(book => ({ type: 'book', data: book }));
+  //   }
+
+  //   const booksWithAds = [];
+  //   const adFrequency = 3; // Show ad after every 3 books
+    
+  //   filteredBooks.forEach((book, index) => {
+  //     booksWithAds.push({ type: 'book', data: book });
+      
+  //     // Insert ad after every adFrequency books, but not after the last book
+  //     if ((index + 1) % adFrequency === 0 && index !== filteredBooks.length - 1) {
+  //       const adIndex = (index / adFrequency) % ads.length;
+  //       booksWithAds.push({ type: 'ad', data: ads[adIndex] });
+  //     }
+  //   });
+
+  //   return booksWithAds;
+  // };
+
+  // Function to combine books + ads dynamically for mobile view
+const getBooksWithAds = () => {
+  // If not mobile → return only books
+  if (!isMobile) {
+    return filteredBooks.map(book => ({ type: "book", data: book }));
+  }
+
+  const list = [];
+  const adFrequency = 3; // Show ad after every 3 books
+
+  filteredBooks.forEach((book, index) => {
+    list.push({ type: "book", data: book });
+
+    // Insert ads dynamically based on frequency
+    if ((index + 1) % adFrequency === 0 && ads.length > 0) {
+      const adIndex = Math.floor(index / adFrequency) % ads.length;
+      list.push({ type: "ad", data: ads[adIndex] });
+    }
+  });
+
+  // Add extra ads if ads are more than book-insert points
+  if (ads.length > 0 && list.filter(i => i.type === "ad").length < ads.length) {
+    ads.forEach((ad) => {
+      list.push({ type: "ad", data: ad });
+    });
+  }
+
+  return list;
+};
+
   return (
     <div className="elibrary__container">
       {/* Left Sidebar */}
@@ -178,9 +683,6 @@ const ELibraryBooks = () => {
                       )
                     }
                   >
-                    {/* <span className="elibrary__category-icon">
-                      {stack.icon || "💻"}
-                    </span> */}
                     <span className="elibrary__category-text">
                       {stack.name}
                     </span>
@@ -256,23 +758,19 @@ const ELibraryBooks = () => {
               </div>
 
               <div className="elibrary__header-stats">
-                {
-                  <button
-                    className="elibrary__stats-badge"
-                    onClick={() => setSidebarOpen(!sidebarOpen)}
-                    aria-label="Toggle sidebar"
-                  >
-                    <span className="elibrary__toggle-icon">☰</span>
-                    <span className="elibrary__toggle-text">Categories</span>
-                  </button>
-                }
+                <button
+                  className="elibrary__stats-badge"
+                  onClick={() => setSidebarOpen(!sidebarOpen)}
+                  aria-label="Toggle sidebar"
+                >
+                  <span className="elibrary__toggle-icon">☰</span>
+                  <span className="elibrary__toggle-text">Categories</span>
+                </button>
               </div>
             </div>
           </div>
         </header>
-
-        {/* Books Grid */}
-        <main className="elibrary__books-main">
+        {/* <main className="elibrary__books-main">
           {loading ? (
             <div className="elibrary__loading-container">
               <div className="elibrary__loading-spinner"></div>
@@ -292,41 +790,90 @@ const ELibraryBooks = () => {
             </div>
           ) : (
             <div className="elibrary__books-grid">
-              {filteredBooks.map((book) => (
-                <BookCard
-                  key={book._id}
-                  book={book}
-                  handleCodeYourself={handleCodeYourself}
-                  onRead={handleReadBook}
-                  onTestSkill={onTestSkill}
-                  handleAsktoAI={handleAsktoAI}
-                />
-              ))}
+              {getBooksWithAds().map((item, index) => 
+                item.type === 'book' ? (
+                  <BookCard
+                    key={`book-${item.data._id}`}
+                    book={item.data}
+                    handleCodeYourself={handleCodeYourself}
+                    onRead={handleReadBook}
+                    onTestSkill={onTestSkill}
+                    handleAsktoAI={handleAsktoAI}
+                  />
+                ) : (
+                  <MobileAdCard key={`ad-${index}`} ad={item.data} />
+                )
+              )}
             </div>
           )}
-        </main>
+        </main> */}
+        <main className="elibrary__books-main">
+  {loading ? (
+    <div className="elibrary__loading-container">
+      <div className="elibrary__loading-spinner"></div>
+      <p>Loading books...</p>
+    </div>
+  ) : filteredBooks.length === 0 ? (
+    <div className="elibrary__no-books">
+      <div className="elibrary__no-books-icon">📚</div>
+      <h3>No books found</h3>
+      <p>Try adjusting your search or filters</p>
+      <button
+        className="elibrary__clear-filters-btn-large"
+        onClick={clearFilters}
+      >
+        Clear All Filters
+      </button>
+    </div>
+  ) : (
+    <div className="elibrary__books-grid">
+      {getBooksWithAds().map((item, index) =>
+        item.type === "book" ? (
+          <BookCard
+            key={`book-${item.data._id}-${index}`}
+            book={item.data}
+            handleCodeYourself={handleCodeYourself}
+            onRead={handleReadBook}
+            onTestSkill={onTestSkill}
+            handleAsktoAI={handleAsktoAI}
+          />
+        ) : (
+          <MobileAdCard key={`ad-${index}`} ad={item.data} />
+        )
+      )}
+    </div>
+  )}
+</main>
+
       </div>
 
-      {/* Right Sidebar - Ads */}
-      <div className="elibrary__ads-sidebar">
-        <div className="elibrary__ads-header">
-          <div className="elibrary__ads-title">
-            <h3>Kumarinfotech</h3>
-            <span className="elibrary__ad-badge">Ads</span>
+      {/* Right Sidebar - Ads (Desktop only) */}
+      {!isMobile && loading ? 
+      <div className="elibrary__loading-container">
+      <div className="elibrary__loading-spinner"></div>
+      <p>Loading books...</p>
+    </div>
+     : (
+        <div className="elibrary__ads-sidebar">
+          <div className="elibrary__ads-header">
+            <div className="elibrary__ads-title">
+              <h3>Kumarinfotech</h3>
+              <span className="elibrary__ad-badge">Ads</span>
+            </div>
+          </div>
+          <div className="elibrary__ads-container">
+            {ads.map((ad) => (
+              <AdCard key={ad._id} ad={ad} />
+            ))}
+            {ads.length === 0 && (
+              <div className="elibrary__no-ads">
+                <div className="elibrary__no-ads-icon">✨</div>
+                <p>No Ads content available</p>
+              </div>
+            )}
           </div>
         </div>
-        <div className="elibrary__ads-container">
-          {ads.map((ad) => (
-            <AdCard key={ad._id} ad={ad} />
-          ))}
-          {ads.length === 0 && (
-            <div className="elibrary__no-ads">
-              <div className="elibrary__no-ads-icon">✨</div>
-              <p>No featured content available</p>
-            </div>
-          )}
-        </div>
-      </div>
+      )}
 
       {sidebarOpen && (
         <div
@@ -361,16 +908,6 @@ const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself, handleAsktoAI
         <h3 className="elibrary__book-title" title={book.title}>
           {book.title}
         </h3>
-
-        {/* {book.author && (
-          <p className="elibrary__book-author">By {book.author}</p>
-        )} */}
-
-        {/* {book.techStack && (
-          <div className="elibrary__book-tech">
-            <span className="elibrary__tech-badge">{book.techStack.name}</span>
-          </div>
-        )} */}
 
         <div className="elibrary__book-actions">
           <button
@@ -407,15 +944,15 @@ const BookCard = ({ book, onRead, onTestSkill, handleCodeYourself, handleAsktoAI
   );
 };
 
-// Ad Card Component
+// Desktop Ad Card Component
 const AdCard = ({ ad }) => (
   <div className="elibrary__ad-card">
     <div className="elibrary__ad-image">
-      <img src={ad.image} alt={ad.title} loading="lazy" />
+      <img src={ad?.image} alt={ad?.title} loading="lazy" />
       <div className="elibrary__ad-overlay">KIT</div>
     </div>
     <div className="elibrary__ad-content">
-      <h4 className="elibrary__ad-title">{ad.title}</h4>
+      <h4 className="elibrary__ad-title">{ad?.title}</h4>
       <p className="elibrary__ad-description">{ad.description}</p>
       <button
         className="elibrary__ad-cta-btn"
@@ -423,6 +960,30 @@ const AdCard = ({ ad }) => (
       >
         Learn More
         <span className="elibrary__ad-cta-icon">→</span>
+      </button>
+    </div>
+  </div>
+);
+
+// Mobile Ad Card Component - Compact Design
+const MobileAdCard = ({ ad }) => (
+  <div className="elibrary__mobile-ad-card">
+    <div className="elibrary__mobile-ad-content">
+      <div className="elibrary__mobile-ad-badge">Sponsored</div>
+      <div className="elibrary__mobile-ad-main">
+        <div className="elibrary__mobile-ad-image">
+          <img src={ad?.image} alt={ad?.title} loading="lazy" />
+        </div>
+        <div className="elibrary__mobile-ad-text">
+          <h4 className="elibrary__mobile-ad-title">{ad?.title}</h4>
+          <p className="elibrary__mobile-ad-description">{ad?.description}</p>
+        </div>
+      </div>
+      <button
+        className="elibrary__mobile-ad-cta"
+        onClick={() => window.open(ad?.link, "_blank")}
+      >
+        Learn More
       </button>
     </div>
   </div>

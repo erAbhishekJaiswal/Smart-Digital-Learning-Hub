@@ -990,3 +990,179 @@
 .elibrary__ads-sidebar::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+
+
+
+
+
+
+/* ELibraryBooks.css - Updated with Mobile Ads */
+
+/* ... (keep all existing CSS variables and styles) ... */
+
+/* Mobile Ad Card - Compact Design */
+.elibrary__mobile-ad-card {
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  border-radius: var(--border-radius-lg);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: none;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.elibrary__mobile-ad-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4);
+}
+
+.elibrary__mobile-ad-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.elibrary__mobile-ad-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #764ba2;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.elibrary__mobile-ad-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.elibrary__mobile-ad-image {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.elibrary__mobile-ad-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.elibrary__mobile-ad-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.elibrary__mobile-ad-title {
+  /* color: white; */
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.elibrary__mobile-ad-description {
+  /* color: rgba(255, 255, 255, 0.9); */
+  font-size: 0.7rem;
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.elibrary__mobile-ad-cta {
+  background: rgba(255, 255, 255, 0.95);
+  color: #764ba2;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.elibrary__mobile-ad-cta:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide mobile ads on desktop */
+@media (min-width: 1025px) {
+  .elibrary__mobile-ad-card {
+    display: none;
+  }
+}
+
+/* Show mobile ads only on mobile */
+@media (max-width: 1024px) {
+  .elibrary__mobile-ad-card {
+    display: block;
+  }
+  
+  /* Adjust grid for mobile with ads */
+  .elibrary__books-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .elibrary__mobile-ad-card {
+    padding: 0.6rem;
+    margin: 0.3rem 0;
+  }
+  
+  .elibrary__mobile-ad-main {
+    gap: 0.5rem;
+  }
+  
+  .elibrary__mobile-ad-image {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .elibrary__mobile-ad-title {
+    font-size: 0.75rem;
+  }
+  
+  .elibrary__mobile-ad-description {
+    font-size: 0.65rem;
+  }
+  
+  .elibrary__mobile-ad-cta {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* ... (rest of the existing CSS remains the same) ... */

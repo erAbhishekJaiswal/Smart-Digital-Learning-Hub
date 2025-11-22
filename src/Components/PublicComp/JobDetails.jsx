@@ -14,11 +14,11 @@ const JobDetails = ({ job, onApply }) => {
     <div className="job-details-container">
       {/* ✅ Header Section */}
       <div className="job-details-header">
-        <img
+        {/* <img
           src={job.company?.logoUrl || "https://via.placeholder.com/80"}
           alt={job.company?.name}
           className="job-company-logo"
-        />
+        /> */}
         <div className="job-header-info">
           <h2 className="job-title">{job.title}</h2>
           <p className="company-name">{job.company?.name}</p>
