@@ -261,6 +261,44 @@
 }
 
 
+.question-box {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.option-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.btn-delete-option {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.btn-add-option,
+.btn-add-question {
+  background: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.btn-delete-question {
+  background: #d9534f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
 
 
 
@@ -533,7 +571,7 @@
   margin-bottom: 20px;
 }
 
-.form-group {
+.test-form-group {
   margin-bottom: 20px;
 }
 

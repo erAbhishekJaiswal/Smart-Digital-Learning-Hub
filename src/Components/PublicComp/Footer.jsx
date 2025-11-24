@@ -113,7 +113,7 @@ const Footer = () => {
 
       {/* 3. Copyright Bar */}
       <div className="footer-copyright">
-        <p>Copyright 2025. Designed & Developed By Kumarinfotech</p>
+        <p>Copyright 2025. Designed & Developed By <span><a href="https://www.kumarinfotech.net">Kumarinfotech</a></span> </p>
       </div>
     </div>
   );

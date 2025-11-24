@@ -127,7 +127,7 @@ body{
 
 .pdf-book-reader__book-info {
   flex: 1;
-  min-width: 200px;
+  min-width: 120px;
 }
 
 .pdf-book-reader__book-info h2 {
@@ -519,7 +519,7 @@ body{
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .pdf-book-reader__header {
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     gap: 20px;
   }
