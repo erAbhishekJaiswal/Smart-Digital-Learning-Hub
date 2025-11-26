@@ -936,7 +936,7 @@ const ApplicationList = () => {
   }, []);
 
   // Extract unique job titles for filter
-  const jobTitles = [...new Set(applications.map(app => app.job.title))];
+  const jobTitles = [...new Set(applications.map(app => app?.job?.title))];
 
   // Filter and search applications
   useEffect(() => {

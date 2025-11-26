@@ -188,12 +188,22 @@ const Header = () => {
                 </button>
               </li>
               <li className="public-header-list-li">
-                <button
+                {/* <button
                   className={isActive("/jobportal")}
                   onClick={() => handleNavClick("/jobportal")}
                 >
                   Jobs
-                </button>
+                </button> */}
+                <a
+                  className={
+                    window.location.href.includes("jobportal")
+                      ? "active-nav"
+                      : ""
+                  }
+                  href="https://www.jobportalindia.kumarinfotech.net/"
+                >
+                  Jobs
+                </a>
               </li>
               {/* make the redirect to on the links */}
               <li className="public-header-list-li">
