@@ -27,6 +27,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon: <IoIosAddCircleOutline />, label: 'Create Company', path: '/admin/addcompany' },
     { icon: <CiBoxList />, label: 'JobList', path: '/admin/joblist' },
     { icon: <IoMdListBox />, label: 'Job Applications', path: '/admin/applicationlist' },
+    {icon: <MdInsights />, label: 'Visitors', path: '/admin/analytics' },
     // { icon: <MdSettings />, label: 'Settings', path: '/admin/settings' },
     // { icon: <MdSupportAgent />, label: 'Support', path: '/admin/support' }
   ];
