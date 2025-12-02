@@ -20,6 +20,20 @@ function App() {
     
     sessionStorage.setItem("visitedDate", today);
   }, []);
+
+  // Track visitors without IP
+useEffect(() => {
+  const withoutIpTracking = async () => {
+    try {
+      const response = await axios.get(`${BasseUrl}/visitors/view/count`);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching visitors:", error);
+    }
+  };
+
+  withoutIpTracking();
+}, []);
   return (
     <div className="home-page">
     {/* <div className="home-page__container">
