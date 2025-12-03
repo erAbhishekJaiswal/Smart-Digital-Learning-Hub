@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./CreateTest.css"; // Import the CSS file
+import { getToken } from "../../../utils/localstorage";
 
 const CreateTest = () => {
+  const token = getToken();
+
   const [form, setForm] = useState({
     title: "",
     subcategory: "",
@@ -19,7 +22,9 @@ const CreateTest = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/test/`, form);
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/test/`, form, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       const data = res.data;
       console.log(data);
 

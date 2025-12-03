@@ -35,7 +35,9 @@ const TestAttempt = () => {
   }
     setLoading(true);
     // Fetch test data from backend (mocked here)
-    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/test/${bookId}`);
+    const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/test/${bookId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
     const data = res.data;
     console.log(data);
 

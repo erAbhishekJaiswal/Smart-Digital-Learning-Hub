@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { getToken } from "../../../utils/localstorage";
 const CreateTestModal = ({ onClose }) => {
+  const token = getToken();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -71,7 +72,10 @@ const CreateTestModal = ({ onClose }) => {
     setLoading(true);
     console.log(formData);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/test/`, formData);
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/test/`, formData , {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+      );
       console.log("Created Test:", res.data);
 
       alert("✅ Test created successfully! You can now add questions.");

@@ -209,8 +209,10 @@ import { useNavigate } from "react-router-dom";
 import { getUserRole, isUserLoggedIn } from "../../../utils/localstorage";
 const BasseUrl = import.meta.env.VITE_BASE_URL
 import {toast} from "react-hot-toast";
+import { getToken } from "../../../utils/localstorage";
 
 const BookListPage = () => {
+  const token = getToken();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -261,7 +263,9 @@ const BookListPage = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this book?")) return;
     try {
-      await axios.delete(`${BasseUrl}/ebooks/${id}`);
+      await axios.delete(`${BasseUrl}/ebooks/${id}` 
+      , { headers: { Authorization: `Bearer ${token}` } }
+      );
       fetchBooks();
       toast.success("Book deleted successfully");
     } catch (err) {
@@ -323,7 +327,8 @@ const BookListPage = () => {
 
       const response = await axios.put(
         `${BasseUrl}/ebooks/${editingBook._id}`,
-        submitData
+        submitData,
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       // Update the books list with the updated book

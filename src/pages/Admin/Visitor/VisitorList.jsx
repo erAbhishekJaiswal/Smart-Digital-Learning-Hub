@@ -6,7 +6,7 @@ import {
 } from "recharts";
 import * as XLSX from "xlsx";
 import "./VisitorList.css";
-
+import { getToken } from "../../../utils/localstorage";
 const BasseUrl = import.meta.env.VITE_BASE_URL;
 
 const VisitorList = () => {
@@ -17,7 +17,9 @@ const VisitorList = () => {
   }, []);
 
   const loadData = async () => {
-    const res = await axios.get(`${BasseUrl}/visitors/report`);
+    const res = await axios.get(`${BasseUrl}/visitors/report`, {
+      headers: { Authorization: `Bearer ${getToken()}` },
+    });
     console.log(res);
     
     setData(res.data);
@@ -48,8 +50,12 @@ const VisitorList = () => {
           <p>{data.length}</p>
         </div>
         <div className="admin-analytics-card">
-          <h4>Total Visitors</h4>
+          <h4>Total IP Visitors</h4>
           <p>{data.reduce((a, b) => a + b.visitors, 0)}</p>
+        </div>
+        <div className="admin-analytics-card">
+          <h4>Total without IP Visitors</h4>
+          <p>{data.reduce((a, b) => a + b.withoutIP, 0)}</p>
         </div>
         <div className="admin-analytics-card">
           <h4>Best Day</h4>
@@ -103,7 +109,8 @@ const VisitorList = () => {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Total Visitors</th>
+              <th>Total IP</th>
+              <th>Without IP</th>
             </tr>
           </thead>
           <tbody>
@@ -111,6 +118,7 @@ const VisitorList = () => {
               <tr key={row.date}>
                 <td>{row.date}</td>
                 <td>{row.visitors}</td>
+                <td>{row.withoutIP}</td>
               </tr>
             ))}
           </tbody>

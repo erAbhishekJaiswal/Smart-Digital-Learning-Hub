@@ -17,12 +17,12 @@ import AddQuestion from './test/AddQuestion';
 import PdfBookReader from '../PdfBookReader/PdfBookReader'
 import CreateUpdate from './course/CreateUpdate'
 import AdminTechStackList from './techStack/AdminTechstacklist'
-import AddCompany from './Job/AddCompany'
-import ApplicationList from './Application/ApplicationList'
-import ResumeViewer from './Application/ResumeViewer'
+// import AddCompany from './Job/AddCompany'
+// import ApplicationList from './Application/ApplicationList'
+// import ResumeViewer from './Application/ResumeViewer'
 import UserDetails from './usermanage/UserDetails'
-import PostJobForm from './Job/PostJobForm'
-import AdminJobsList from './Job/AdminJobsList'
+// import PostJobForm from './Job/PostJobForm'
+// import AdminJobsList from './Job/AdminJobsList'
 import VisitorList from './Visitor/VisitorList'
 
 const AdminPages = () => {
@@ -49,6 +49,7 @@ const AdminPages = () => {
           onThemeToggle={() => setDarkMode(!darkMode)}
         />
     <Routes >
+      <Route path="/analytics" element={<VisitorList dark={darkMode} />} /> 
         <Route path='/' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/dashboard' element={<AdminDashboard dark={darkMode}  />} />
         <Route path='/userlist' element ={<UserList dark={darkMode}  />} />
@@ -75,12 +76,12 @@ const AdminPages = () => {
         <Route path="/testlist" element={<TestList />} />
 
         {/********************job Routes *********************/}
-        <Route path='/addcompany' element={<AddCompany dark={darkMode} />} />
+        {/* <Route path='/addcompany' element={<AddCompany dark={darkMode} />} />
         <Route path='/joblist' element={<AdminJobsList dark={darkMode} />} />
         <Route path='/applicationlist' element={<ApplicationList dark={darkMode} />} />
         <Route path='/resume/:publicId' element={<ResumeViewer dark={darkMode} />} />
-        <Route path='/postjob' element={<PostJobForm dark={darkMode} />} />
-        <Route path="/analytics" element={<VisitorList dark={darkMode} />} />
+        <Route path='/postjob' element={<PostJobForm dark={darkMode} />} />*/}
+        
         {/* <Route path='/create/ads' element={<CreateTechStack dark={darkMode} />} /> */}
     </Routes>
     </div>

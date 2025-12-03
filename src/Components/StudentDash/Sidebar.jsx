@@ -17,7 +17,7 @@ const Sidebar = ({ isOpen, onClose, darkMode }) => {
     { icon: <MdDashboard />, label: 'Dashboard', active: false,  path: '/student/'},
     { icon: <MdPersonOutline />, label: 'My Profile', path: '/student/profile' },
     // { icon: <IoMdBook />, label: 'Books', path: '/student/books' },
-    { icon: < FaArrowTrendUp/>, label: 'Trending', path: '/' },
+    { icon: < FaArrowTrendUp/>, label: 'Trending Books', path: '/' },
     // { icon: <LiaCertificateSolid />, label: 'Cirtificates', path: '/student/certificates' },
     { icon: <FaCode />, label: 'Code Editor', path: '/student/codeediter' },
     { icon: <MdLibraryBooks />, label: 'My Tests', path: '/student/mytests' },

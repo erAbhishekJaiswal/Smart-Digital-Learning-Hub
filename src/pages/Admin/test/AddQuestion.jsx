@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 const BasseUrl = import.meta.env.VITE_BASE_URL
+import { getToken } from "../../../utils/localstorage";
 
 const AddQuestion = () => {
+  const token = getToken();
   const { testId } = useParams();
   const createEmptyQuestion = () => ({
     question: "",
@@ -103,7 +105,9 @@ const AddQuestion = () => {
     // Simulate API call
     // await new Promise((res) => setTimeout(res, 1500));
 
-    const res = await axios.post(`${BasseUrl}/test/${testId}/questions`, questions);
+    const res = await axios.post(`${BasseUrl}/test/${testId}/questions`, questions, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const data = res.data;
     console.log(data);
 

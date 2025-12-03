@@ -3,7 +3,9 @@ import axios from "axios";
 import "../../../CSSFiles/Admin/CreateTeckStack.css"; // Optional: for styling
 import toast from "react-hot-toast";
 const BasseUrl = import.meta.env.VITE_BASE_URL;
+import { getToken } from "../../../utils/localstorage";
 const CreateTechStack = () => {
+  const token = getToken();
   const [name, setName] = useState("");
   // const [icon, setIcon] = useState('');
   const [description, setDescription] = useState("");
@@ -39,7 +41,8 @@ const CreateTechStack = () => {
         description,
         popularityScore,
         subcategories,
-      });
+      }
+      , { headers: { Authorization: `Bearer ${token}` } });
 
       if (response.status === 201) {
         toast.success("Tech Stack created successfully!");
