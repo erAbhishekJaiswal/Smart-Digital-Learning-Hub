@@ -728,7 +728,7 @@ const getBooksWithAds = () => {
           </div>
         </div>
 
-        <div className="elibrary__sidebar-footer">
+        {/* <div className="elibrary__sidebar-footer">
           <button
             className="elibrary__clear-filters-btn"
             onClick={clearFilters}
@@ -736,7 +736,7 @@ const getBooksWithAds = () => {
             <span className="elibrary__clear-icon">🗑️</span>
             Clear Filters
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Main Content */}
