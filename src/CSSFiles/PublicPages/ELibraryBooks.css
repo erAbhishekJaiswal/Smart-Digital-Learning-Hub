@@ -270,7 +270,7 @@
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
-  color: var(--text-muted);
+  color: rgb(29, 29, 29);
   font-size: 0.8rem;
   width: 100%;
   text-align: left;
@@ -353,7 +353,7 @@
 .elibrary__search-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2rem;
 }
 

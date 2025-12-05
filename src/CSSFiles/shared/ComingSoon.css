@@ -1,14 +1,14 @@
 /* ====== WRAPPER ====== */
 .cs-wrapper {
-  min-height: 100vh;
+  min-height: 80vh;
   width: 100%;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  /* background: linear-gradient(135deg, #1e3c72, #2a5298); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
-  color: white;
+  /* padding: 1.5rem; */
+  color: #1c69ff;
   font-family: "Poppins", sans-serif;
 }
 
@@ -77,6 +77,19 @@
 
 .cs-email-input:focus {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.comming-soon-back-to-home-btn{
+  margin-top: 1rem;
+  background: none;
+  border: 2px solid #577bff;
+  color: #3653fc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 /* ====== BUTTON ====== */

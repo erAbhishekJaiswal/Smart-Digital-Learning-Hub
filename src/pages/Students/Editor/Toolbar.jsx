@@ -31,7 +31,7 @@ const Toolbar = ({ activeTab, setActiveTab, runCode, resetCode, isRunning }) => 
 
       <div className="student-action-buttons">
         <button 
-          className='back-to-home-btn'
+          className='toolbar-back-to-home-btn'
           onClick={() => window.location.href='/'}
         >
           Back to Home

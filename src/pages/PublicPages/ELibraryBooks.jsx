@@ -648,9 +648,9 @@ const getBooksWithAds = () => {
         </div>
 
         <div className="elibrary__category-section">
-          <div className="elibrary__section-header">
+          {/* <div className="elibrary__section-header">
             <h4>Tech Stack</h4>
-          </div>
+          </div> */}
           <div className="elibrary__category-list">
             <button
               className={`elibrary__category-item ${
@@ -700,7 +700,7 @@ const getBooksWithAds = () => {
                   {/* Expandable Subcategories */}
                   <div
                     className={`elibrary__subcategory-wrapper ${
-                      stack.expanded ? "expanded" : ""
+                      stack.expanded ? "" : "expanded"
                     }`}
                   >
                     {stack.subcategories?.map((sub) => (
@@ -713,10 +713,12 @@ const getBooksWithAds = () => {
                           handleCategorySelect(sub._id, "subcategory")
                         }
                       >
+                     
                         <span className="elibrary__subcategory-icon">↳</span>
                         <span className="elibrary__subcategory-text">
                           {sub.name}
                         </span>
+                        
                       </button>
                     ))}
                   </div>
@@ -857,7 +859,7 @@ const getBooksWithAds = () => {
         <div className="elibrary__ads-sidebar">
           <div className="elibrary__ads-header">
             <div className="elibrary__ads-title">
-              <h3>Kumarinfotech</h3>
+              <h3>Sponsored</h3>
               <span className="elibrary__ad-badge">Ads</span>
             </div>
           </div>

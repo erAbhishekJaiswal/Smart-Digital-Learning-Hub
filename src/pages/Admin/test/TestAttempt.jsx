@@ -33,7 +33,9 @@ const TestAttempt = () => {
     toast.error('You are not logged in');
     navigate('/signin');
   }
-    setLoading(true);
+
+  try {
+       setLoading(true);
     // Fetch test data from backend (mocked here)
     const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/test/${bookId}`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -41,72 +43,16 @@ const TestAttempt = () => {
     const data = res.data;
     console.log(data);
 
-    // Mock test data
-    // const mockTest = {
-    //   _id: bookId,
-    //   title: 'JavaScript Fundamentals',
-    //   subcategory: 'Programming',
-    //   duration: 30, // minutes
-    //   totalQuestions: 5,
-    //   difficulty: 'Beginner',
-    //   questions: [
-    //     {
-    //       _id: 'q1',
-    //       question: 'What does HTML stand for?',
-    //       options: [
-    //         'Hyper Text Markup Language',
-    //         'High Tech Modern Language',
-    //         'Hyper Transfer Markup Language',
-    //         'Home Tool Markup Language'
-    //       ]
-    //     },
-    //     {
-    //       _id: 'q2',
-    //       question: 'Which of the following is a JavaScript framework?',
-    //       options: [
-    //         'React',
-    //         'Laravel',
-    //         'Django',
-    //         'Spring'
-    //       ]
-    //     },
-    //     {
-    //       _id: 'q3',
-    //       question: 'What is the output of: console.log(typeof null)?',
-    //       options: [
-    //         'object',
-    //         'null',
-    //         'undefined',
-    //         'string'
-    //       ]
-    //     },
-    //     {
-    //       _id: 'q4',
-    //       question: 'Which method adds an element to the end of an array?',
-    //       options: [
-    //         'push()',
-    //         'pop()',
-    //         'shift()',
-    //         'unshift()'
-    //       ]
-    //     },
-    //     {
-    //       _id: 'q5',
-    //       question: 'What does CSS stand for?',
-    //       options: [
-    //         'Cascading Style Sheets',
-    //         'Computer Style Sheets',
-    //         'Creative Style System',
-    //         'Colorful Style Sheets'
-    //       ]
-    //     }
-    //   ]
-    // };
-    
     setTest(data); // assuming data is an array of tests
     setTimeLeft(data.duration * 60); // Convert to seconds
     setAnswers(new Array(data?.questions?.length).fill(null));
     setLoading(false);
+  } catch (error) {
+     toast.error("Test are not available right now");
+          setLoading(false);
+          navigate('/');
+  }
+ 
   };
 
   const startTest = () => {

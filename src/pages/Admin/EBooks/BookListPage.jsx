@@ -243,6 +243,7 @@ const BookListPage = () => {
       setLoading(true);
       const res = await axios.get(`${BasseUrl}/ebooks/admin`, {
         params: { search, level, language, page },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setBooks(res.data.books);
       setTotalPages(res.data.totalPages);
